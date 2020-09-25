@@ -1,4 +1,4 @@
- AS V1.42 Beta [Bld 118] - source file main.asm - page 1 - 10/13/2019 20:42:13
+ AS V1.42 Beta [Bld 118] - source file main.asm - page 1 - 9/24/2020 23:12:30
 
 
        1/       0 :                     ; ===========================================================================
@@ -573,7 +573,7 @@ MD RAM ends at: FFA08A
 (1)   78/     190 : 4A20 2020 2020 2020 		dc.b "J               "					; Peripherals supported, "J" is 3-button controller
                     2020 2020 2020 2020 
 (1)   79/     1A0 : 0000 0000           		dc.l 0							; ROM Start address, always 0
-(1)   80/     1A4 : 0000 6657           		dc.l ROM_END-1						; ROM End address - 1
+(1)   80/     1A4 : 0000 6677           		dc.l ROM_END-1						; ROM End address - 1
 (1)   81/     1A8 : 00FF 0000           		dc.l $FF0000						; RAM Start address, always $FF0000
 (1)   82/     1AC : 00FF FFFF           		dc.l $FFFFFF						; RAM Start address, always $FFFFFF
 (1)   83/     1B0 : 5241 F820           		dc.b "RA",$F8,$20
@@ -3881,7 +3881,7 @@ MD RAM ends at: FFA08A
 (1)   43/    1E48 : 0039 0002 FFFF A01C 		or.b	#%00000010,(RAM_VdpCache+$C).l
 (1)   44/    1E50 : 6100 ECF6           		bsr	Video_Update
 (1)   45/    1E54 : 43F9 FFFF 0000      		lea	(RAM_FM_Intr),a1
-(1)   46/    1E5A : 41FA 1114           		lea	FmData_Default(pc),a0
+(1)   46/    1E5A : 41FA 1134           		lea	FmData_Default(pc),a0
 (1)   47/    1E5E : 323C 001F           		move.w	#$20-1,d1
 (1)   48/    1E62 :                     .copy:
 (1)   49/    1E62 : 12D8                		move.b	(a0)+,(a1)+
@@ -3900,16 +3900,16 @@ MD RAM ends at: FFA08A
 (1)   62/    1E88 : 30C0                		move.w	d0,(a0)+
 (1)   63/    1E8A :                     
 (1)   64/    1E8A :                     	; Title and OPs
-(1)   65/    1E8A : 41FA 42A4           		lea	Map_BgYmEd(pc),a0
+(1)   65/    1E8A : 41FA 42C4           		lea	Map_BgYmEd(pc),a0
 (1)   66/    1E8E : 203C 0001 1302      		move.l	#locate(1,19,2),d0
 (1)   67/    1E94 : 223C 0013 000E      		move.l	#mapsize(160,120),d1
 (1)   68/    1E9A : 343C 2100           		move.w	#$2100,d2
 (1)   69/    1E9E : 6100 ED3A           		bsr	Video_LoadMap
 (1)   70/    1EA2 : 7200                		moveq	#0,d1
-(1)   71/    1EA4 : 41FA 0C02           		lea	Asc_Title(pc),a0
+(1)   71/    1EA4 : 41FA 0C28           		lea	Asc_Title(pc),a0
 (1)   72/    1EA8 : 203C 0000 0101      		move.l	#locate(0,1,1),d0
 (1)   73/    1EAE : 6100 020A           		bsr	AscPrint_custom
-(1)   74/    1EB2 : 41FA 0C02           		lea	Asc_OpNames(pc),a0
+(1)   74/    1EB2 : 41FA 0C28           		lea	Asc_OpNames(pc),a0
 (1)   75/    1EB6 : 203C 0000 1403      		move.l	#locate(0,20,3),d0
 (1)   76/    1EBC : 6100 01FC           		bsr	AscPrint_custom
 (1)   77/    1EC0 : 6100 0734           		bsr	FmEdit_DrawMenu
@@ -3918,15 +3918,15 @@ MD RAM ends at: FFA08A
 (1)   80/    1ECA : 323C 0C00           		move.w	#(Art_PrintFont_e-Art_PrintFont),d1
 (1)   81/    1ECE : 343C 0020           		move.w	#$20,d2
 (1)   82/    1ED2 : 6100 F12A           		bsr	Video_LoadArt
-(1)   83/    1ED6 : 203C 0000 2F90      		move.l	#Art_BgYmEd,d0
+(1)   83/    1ED6 : 203C 0000 2FB0      		move.l	#Art_BgYmEd,d0
 (1)   84/    1EDC : 323C 04A0           		move.w	#(Art_BgYmEd_e-Art_BgYmEd),d1
 (1)   85/    1EE0 : 343C 0100           		move.w	#$100,d2
 (1)   86/    1EE4 : 6100 F118           		bsr	Video_LoadArt
-(1)   87/    1EE8 : 203C 0000 3430      		move.l	#Art_Algor,d0
+(1)   87/    1EE8 : 203C 0000 3450      		move.l	#Art_Algor,d0
 (1)   88/    1EEE : 323C 2D00           		move.w	#(Art_Algor_e-Art_Algor),d1
 (1)   89/    1EF2 : 343C 0140           		move.w	#$140,d2
 (1)   90/    1EF6 : 6100 F106           		bsr	Video_LoadArt
-(1)   91/    1EFA : 41FA 0F1A           		lea	Pal_FmScreen(pc),a0
+(1)   91/    1EFA : 41FA 0F40           		lea	Pal_FmScreen(pc),a0
 (1)   92/    1EFE : 7000                		moveq	#0,d0
 (1)   93/    1F00 : 323C 003F           		move.w	#63,d1
 (1)   94/    1F04 : 6100 ECB4           		bsr	Video_LoadPal
@@ -3969,12 +3969,12 @@ MD RAM ends at: FFA08A
 (1)  131/    1F54 : 727F                		moveq	#$7F,d1
 (1)  132/    1F56 : 343C 0003           		move.w	#3,d2
 (1)  133/    1F5A :                     .looptll:
-(1)  134/    1F5A : 6100 0AFE           		bsr	FM_Set
+(1)  134/    1F5A : 6100 0B24           		bsr	FM_Set
 (1)  135/    1F5E : D07C 0004           		add.w	#4,d0
 (1)  136/    1F62 : 51CA FFF6           		dbf	d2,.looptll
 (1)  137/    1F66 : 7028                		moveq	#$28,d0
 (1)  138/    1F68 : 7202                		moveq	#2,d1
-(1)  139/    1F6A : 6100 0AEE           		bsr	FM_Set
+(1)  139/    1F6A : 6100 0B14           		bsr	FM_Set
 (1)  140/    1F6E : 33FC 0000 00A1 1100 		move.w	#0,(z80_bus).l		; $0000 - Start Z80
 (1)  141/    1F76 :                     .st_stop:
 (1)  142/    1F76 :                     
@@ -4584,7 +4584,7 @@ MD RAM ends at: FFA08A
 (1)  746/    24E4 :                     .nozl:
 (1)  747/    24E4 : 3784 5000           		move.w	d4,(a3,d5.w)
 (1)  748/    24E8 : D844                		add.w	d4,d4
-(1)  749/    24EA : 47FA 09AA           		lea	FmData_FreqList(pc),a3
+(1)  749/    24EA : 47FA 09D0           		lea	FmData_FreqList(pc),a3
 (1)  750/    24EE : 49F9 FFFF 0020      		lea	(RAM_SetFreq),a4
 (1)  751/    24F4 : 39B3 4000 5000      		move.w	(a3,d4.w),(a4,d5.w)
 (1)  752/    24FA : 4E75                		rts
@@ -4713,10 +4713,10 @@ MD RAM ends at: FFA08A
 (1)  875/    260C :                     .lkey:
 (1)  876/    260C : 4843                		swap	d3
 (1)  877/    260E : 323C 0000           		move.w	#$0000,d1
-(1)  878/    2612 : 41FA 04B6           		lea	Asc_On(pc),a0
+(1)  878/    2612 : 41FA 04DC           		lea	Asc_On(pc),a0
 (1)  879/    2616 : 0802 0000           		btst	#0,d2
 (1)  880/    261A : 6608                		bne.s	.keyoff
-(1)  881/    261C : 41FA 04B0           		lea	Asc_Off(pc),a0
+(1)  881/    261C : 41FA 04D6           		lea	Asc_Off(pc),a0
 (1)  882/    2620 : 323C 4000           		move.w	#$4000,d1
 (1)  883/    2624 :                     .keyoff:
 (1)  884/    2624 : 0C79 000D FFFF 8006 		cmp.w	#13,(RAM_CurrSet).l
@@ -4758,11 +4758,11 @@ MD RAM ends at: FFA08A
 (1)  920/    267E :                     ; 		beq.s	.notonka
 (1)  921/    267E :                     ; 		add.w	#$2000,d1
 (1)  922/    267E :                     .notonka:
-(1)  923/    267E : 41FA 044E           		lea	Asc_Off(pc),a0
+(1)  923/    267E : 41FA 0474           		lea	Asc_Off(pc),a0
 (1)  924/    2682 : 1813                		move.b	(a3),d4
 (1)  925/    2684 : C83C 0080           		and.b	#%10000000,d4
 (1)  926/    2688 : 6704                		beq.s	.ampoff
-(1)  927/    268A : 41FA 043E           		lea	Asc_On(pc),a0
+(1)  927/    268A : 41FA 0464           		lea	Asc_On(pc),a0
 (1)  928/    268E :                     .ampoff:
 (1)  929/    268E : 6100 FA2A           		bsr	AscPrint_custom
 (1)  930/    2692 :                     		
@@ -4789,10 +4789,10 @@ MD RAM ends at: FFA08A
 (1)  951/    26BE :                     	; LFO CUSTOM
 (1)  952/    26BE : 2600                		move.l	d0,d3
 (1)  953/    26C0 : 203C 0000 0518      		move.l	#locate(0,5,24),d0
-(1)  954/    26C6 : 41FA 0406           		lea	Asc_Off(pc),a0
+(1)  954/    26C6 : 41FA 042C           		lea	Asc_Off(pc),a0
 (1)  955/    26CA : 0838 0003 8015      		btst	#3,(RAM_LFO+1).w
 (1)  956/    26D0 : 6704                		beq.s	.lfooff
-(1)  957/    26D2 : 41FA 03F6           		lea	Asc_On(pc),a0
+(1)  957/    26D2 : 41FA 041C           		lea	Asc_On(pc),a0
 (1)  958/    26D6 :                     .lfooff:
 (1)  959/    26D6 : 6100 F9E2           		bsr	AscPrint_custom
 (1)  960/    26DA :                     
@@ -4812,10 +4812,10 @@ MD RAM ends at: FFA08A
 (1)  974/    26F6 :                     	
 (1)  975/    26F6 :                     	; LFO CUSTOM
 (1)  976/    26F6 : 203C 0000 0F10      		move.l	#locate(0,15,16),d0
-(1)  977/    26FC : 41FA 03D0           		lea	Asc_Off(pc),a0
+(1)  977/    26FC : 41FA 03F6           		lea	Asc_Off(pc),a0
 (1)  978/    2700 : 0839 0006 FFFF 001E 		btst	#6,(RAM_FM_Intr+fmstru_chnmode).l
 (1)  979/    2708 : 6704                		beq.s	.ch3off
-(1)  980/    270A : 41FA 03BE           		lea	Asc_On(pc),a0
+(1)  980/    270A : 41FA 03E4           		lea	Asc_On(pc),a0
 (1)  981/    270E :                     .ch3off:
 (1)  982/    270E : 4241                		clr.w	d1
 (1)  983/    2710 : 0C78 000B 8006      		cmp.w	#11,(RAM_CurrSet)
@@ -4828,7 +4828,7 @@ MD RAM ends at: FFA08A
 (1)  990/    2720 :                     	; one digit mods
 (1)  991/    2720 :                     	; --------------------------------
 (1)  992/    2720 :                     
-(1)  993/    2720 : 45FA 064E           		lea	List_ShftAnd_1(pc),a2
+(1)  993/    2720 : 45FA 0674           		lea	List_ShftAnd_1(pc),a2
 (1)  994/    2724 : 3E1A                		move.w	(a2)+,d7
 (1)  995/    2726 : 9E7C 0001           		sub.w	#1,d7
 (1)  996/    272A :                     .nxt_one_entry:
@@ -4870,7 +4870,7 @@ MD RAM ends at: FFA08A
 (1) 1032/    278A :                     	; --------------------------------
 (1) 1033/    278A :                     	; two digit mods
 (1) 1034/    278A :                     	; --------------------------------
-(1) 1035/    278A : 45FA 062E           		lea	List_ShftAnd_2(pc),a2
+(1) 1035/    278A : 45FA 0654           		lea	List_ShftAnd_2(pc),a2
 (1) 1036/    278E : 3E1A                		move.w	(a2)+,d7
 (1) 1037/    2790 : 9E7C 0001           		sub.w	#1,d7
 (1) 1038/    2794 :                     .nxt_two_entry:
@@ -4954,7 +4954,7 @@ MD RAM ends at: FFA08A
 (1) 1116/    2868 : 4243                		clr.w	d3
 (1) 1117/    286A : 341A                		move.w	(a2)+,d2
 (1) 1118/    286C : E54A                		lsl.w	#2,d2
-(1) 1119/    286E : 41FA 0380           		lea	Asc_NoteNames(pc),a0
+(1) 1119/    286E : 41FA 03A6           		lea	Asc_NoteNames(pc),a0
 (1) 1120/    2872 : D0C2                		adda	d2,a0
 (1) 1121/    2874 : 7200                		moveq	#0,d1
 (1) 1122/    2876 : 0C78 000C 8006      		cmp.w	#12,(RAM_CurrSet)
@@ -4984,7 +4984,7 @@ MD RAM ends at: FFA08A
 (1) 1146/    28BE :                     .nottwow2:
 (1) 1147/    28BE : 341A                		move.w	(a2)+,d2
 (1) 1148/    28C0 : E54A                		lsl.w	#2,d2
-(1) 1149/    28C2 : 41FA 032C           		lea	Asc_NoteNames(pc),a0
+(1) 1149/    28C2 : 41FA 0352           		lea	Asc_NoteNames(pc),a0
 (1) 1150/    28C6 : D0C2                		adda	d2,a0
 (1) 1151/    28C8 : 6100 F7F0           		bsr	AscPrint_custom
 (1) 1152/    28CC : D0BC 0000 0500      		add.l	#$000500,d0
@@ -4995,7 +4995,7 @@ MD RAM ends at: FFA08A
 (1) 1157/    28DC :                     	; --------------------------------
 (1) 1158/    28DC :                     	; Single byte
 (1) 1159/    28DC :                     	; --------------------------------
-(1) 1160/    28DC : 45FA 0506           		lea	List_SingleVal(pc),a2
+(1) 1160/    28DC : 45FA 052C           		lea	List_SingleVal(pc),a2
 (1) 1161/    28E0 : 3E1A                		move.w	(a2)+,d7
 (1) 1162/    28E2 : 9E7C 0001           		sub.w	#1,d7
 (1) 1163/    28E6 :                     .nxt_one_en:
@@ -5035,14 +5035,14 @@ MD RAM ends at: FFA08A
 (1) 1197/    293C :                     	; --------------------------------
 (1) 1198/    293C :                     	; Left side names
 (1) 1199/    293C :                     	; --------------------------------
-(1) 1200/    293C : 41FA 0194           		lea	Asc_Names(pc),a0
+(1) 1200/    293C : 41FA 01BA           		lea	Asc_Names(pc),a0
 (1) 1201/    2940 : 203C 0000 0104      		move.l	#locate(0,1,4),d0
 (1) 1202/    2946 : 7400                		moveq	#0,d2
 (1) 1203/    2948 :                     .lprint:
 (1) 1204/    2948 : 7600                		moveq	#0,d3
 (1) 1205/    294A : 3638 8006           		move.w	(RAM_CurrSet),d3
 (1) 1206/    294E : D643                		add.w	d3,d3
-(1) 1207/    2950 : 49FA 012E           		lea	List_FixdPals(pc),a4
+(1) 1207/    2950 : 49FA 0154           		lea	List_FixdPals(pc),a4
 (1) 1208/    2954 : 3634 3000           		move.w	(a4,d3.w),d3
 (1) 1209/    2958 : 323C 0000           		move.w	#$0000,d1
 (1) 1210/    295C : B443                		cmp.w	d3,d2
@@ -5064,7 +5064,7 @@ MD RAM ends at: FFA08A
 (1) 1226/    2980 : 343C 0140           		move.w	#$140,d2
 (1) 1227/    2984 : C8FC 002D           		mulu.w	#45,d4
 (1) 1228/    2988 : D444                		add.w	d4,d2
-(1) 1229/    298A : 41FA 39FC           		lea	Map_Algor(pc),a0
+(1) 1229/    298A : 41FA 3A1C           		lea	Map_Algor(pc),a0
 (1) 1230/    298E : 203C 0000 1614      		move.l	#locate(0,22,20),d0
 (1) 1231/    2994 : 223C 0008 0004      		move.l	#mapsize(72,40),d1
 (1) 1232/    299A :                     ; 		move.w	#$140,d2
@@ -5080,546 +5080,578 @@ MD RAM ends at: FFA08A
 (1) 1242/    29B0 : 66F6                		bne.s	.waitz			; If not, wait
 (1) 1243/    29B2 : 7028                		moveq	#$28,d0
 (1) 1244/    29B4 : 7202                		moveq	#2,d1
-(1) 1245/    29B6 : 6100 00A2           		bsr	FM_Set
+(1) 1245/    29B6 : 6100 00C8           		bsr	FM_Set
 (1) 1246/    29BA : 7022                		moveq	#$22,d0					; LFO setting
 (1) 1247/    29BC : 3238 8014           		move.w	(RAM_LFO),d1
-(1) 1248/    29C0 : 6100 0098           		bsr	FM_Set
+(1) 1248/    29C0 : 6100 00BE           		bsr	FM_Set
 (1) 1249/    29C4 : 47F9 FFFF 0000      		lea	(RAM_FM_Intr+fmstru_muldept),a3		; skip key MANUAL READ
 (1) 1250/    29CA : 7032                		moveq	#$32,d0					; Regs $30-$90
 (1) 1251/    29CC : 343C 001B           		move.w	#$1B,d2
 (1) 1252/    29D0 :                     .loopi:
 (1) 1253/    29D0 : 121B                		move.b	(a3)+,d1
-(1) 1254/    29D2 : 6100 0086           		bsr	FM_Set
+(1) 1254/    29D2 : 6100 00AC           		bsr	FM_Set
 (1) 1255/    29D6 : D07C 0004           		add.w	#4,d0
 (1) 1256/    29DA : 51CA FFF4           		dbf	d2,.loopi
 (1) 1257/    29DE :                     
-(1) 1258/    29DE : 41F9 FFFF 0020      		lea	(RAM_SetFreq),a0
-(1) 1259/    29E4 : 303C 00A6           		move.w	#$A6,d0
-(1) 1260/    29E8 : 1218                		move.b	(a0)+,d1
-(1) 1261/    29EA : 616E                		bsr	FM_Set
-(1) 1262/    29EC : 303C 00A2           		move.w	#$A2,d0
-(1) 1263/    29F0 : 1218                		move.b	(a0)+,d1
-(1) 1264/    29F2 : 6166                		bsr	FM_Set
-(1) 1265/    29F4 :                     		
-(1) 1266/    29F4 : 4A39 FFFF 001E      		tst.b	(RAM_FM_Intr+fmstru_chnmode).l
-(1) 1267/    29FA : 6726                		beq.s	.noedfreq3
-(1) 1268/    29FC : 41F9 FFFF 0020      		lea	(RAM_SetFreq),a0
-(1) 1269/    2A02 : 203C 00AC 00A8      		move.l	#$00AC00A8,d0
-(1) 1270/    2A08 : 343C 0002           		move.w	#3-1,d2
-(1) 1271/    2A0C :                     .dofreq:
-(1) 1272/    2A0C : 1218                		move.b	(a0)+,d1
-(1) 1273/    2A0E : 614A                		bsr	FM_Set
-(1) 1274/    2A10 : 4840                		swap	d0
-(1) 1275/    2A12 : 1218                		move.b	(a0)+,d1
-(1) 1276/    2A14 : 6144                		bsr	FM_Set
-(1) 1277/    2A16 : 4840                		swap	d0
-(1) 1278/    2A18 : D0BC 0001 0001      		add.l	#$00010001,d0
-(1) 1279/    2A1E : 51CA FFEC           		dbf	d2,.dofreq
-(1) 1280/    2A22 :                     .noedfreq3:
-(1) 1281/    2A22 : 103C 00B2           		move.b	#$B2,d0
-(1) 1282/    2A26 : 121B                		move.b	(a3)+,d1
-(1) 1283/    2A28 : 6130                		bsr	FM_Set
-(1) 1284/    2A2A : 103C 00B6           		move.b	#$B6,d0
-(1) 1285/    2A2E : 121B                		move.b	(a3)+,d1
-(1) 1286/    2A30 : 823C 00C0           		or.b	#%11000000,d1
-(1) 1287/    2A34 : 6124                		bsr	FM_Set
-(1) 1288/    2A36 :                     		
-(1) 1289/    2A36 : 7027                		moveq	#$27,d0
-(1) 1290/    2A38 : 1239 FFFF 001E      		move.b	(RAM_FM_Intr+fmstru_chnmode),d1
-(1) 1291/    2A3E : 611A                		bsr	FM_Set
-(1) 1292/    2A40 :                     
-(1) 1293/    2A40 : 7028                		moveq	#$28,d0
-(1) 1294/    2A42 : 1239 FFFF 001F      		move.b	(RAM_FM_Intr+fmstru_key),d1
-(1) 1295/    2A48 : 823C 0002           		or.b	#%00000010,d1
-(1) 1296/    2A4C : 610C                		bsr	FM_Set
-(1) 1297/    2A4E : 33FC 0000 00A1 1100 		move.w	#0,(z80_bus).l		; $0000 - Start Z80
-(1) 1298/    2A56 : 4E75                		rts
-(1) 1299/    2A58 :                     
-(1) 1300/    2A58 :                     ; ----------------------------------------------------------------
-(1) 1301/    2A58 :                     
-(1) 1302/    2A58 :                     FM_UpdateFreq:
-(1) 1303/    2A58 :                     ; 		move.w	#$0100,(z80_bus).l	; $0100 - Stop Z80
-(1) 1304/    2A58 :                     ; .waitz:
-(1) 1305/    2A58 :                     ; 		btst	#0,(z80_bus).l		; Z80 stopped?
-(1) 1306/    2A58 :                     ; 		bne.s	.waitz			; If not, wait
-(1) 1307/    2A58 :                     ; 
-(1) 1308/    2A58 :                     ; 		move.w	#0,(z80_bus).l		; $0000 - Start Z80
-(1) 1309/    2A58 : 4E75                		rts
-(1) 1310/    2A5A :                     
-(1) 1311/    2A5A :                     ; ----------------------------------------------------------------
-(1) 1312/    2A5A :                     
-(1) 1313/    2A5A :                     FM_Set:
-(1) 1314/    2A5A : 1839 00A0 4000      		move.b	(ym_ctrl_1).l,d4
-(1) 1315/    2A60 : 0804 0007           		btst	#7,d4
-(1) 1316/    2A64 : 66F4                		bne.s	FM_Set
-(1) 1317/    2A66 : 13C0 00A0 4000      		move.b	d0,(ym_ctrl_1).l
-(1) 1318/    2A6C :                     .wait2:
-(1) 1319/    2A6C : 1839 00A0 4000      		move.b	(ym_ctrl_1).l,d4
-(1) 1320/    2A72 : 0804 0007           		btst	#7,d4
-(1) 1321/    2A76 : 66F4                		bne.s	.wait2
-(1) 1322/    2A78 : 13C1 00A0 4001      		move.b	d1,(ym_data_1).l
-(1) 1323/    2A7E : 4E75                		rts
-(1) 1324/    2A80 :                     		
-(1) 1325/    2A80 :                     ; ====================================================================
-(1) 1326/    2A80 :                     ; ----------------------------------------------------------------
-(1) 1327/    2A80 :                     ; Small data
-(1) 1328/    2A80 :                     ; ----------------------------------------------------------------
-(1) 1329/    2A80 :                     
-(1) 1330/    2A80 :                     		align 2
-(1) 1331/    2A80 :                     List_FixdPals:
-(1) 1332/    2A80 : 0000 0001 0002 0003 		dc.w 0,1,2,3,4,5,6,7,8,9,10
+(1) 1258/    29DE : 4A39 FFFF 001E      		tst.b	(RAM_FM_Intr+fmstru_chnmode).l
+(1) 1259/    29E4 : 661C                		bne.s	.has_chnl3
+(1) 1260/    29E6 : 41F9 FFFF 0020      		lea	(RAM_SetFreq),a0
+(1) 1261/    29EC : 303C 00A6           		move.w	#$A6,d0
+(1) 1262/    29F0 : 1218                		move.b	(a0)+,d1
+(1) 1263/    29F2 : 6100 008C           		bsr	FM_Set
+(1) 1264/    29F6 : 303C 00A2           		move.w	#$A2,d0
+(1) 1265/    29FA : 1218                		move.b	(a0)+,d1
+(1) 1266/    29FC : 6100 0082           		bsr	FM_Set
+(1) 1267/    2A00 : 6046                		bra.s	.noedfreq3
+(1) 1268/    2A02 :                     
+(1) 1269/    2A02 :                     .has_chnl3:
+(1) 1270/    2A02 : 41F9 FFFF 0020      		lea	(RAM_SetFreq),a0
+(1) 1271/    2A08 :                     ; 		move.l	#$00AC00A8,d0
+(1) 1272/    2A08 :                     ; 		move.w	#3-1,d2
+(1) 1273/    2A08 :                     ; .dofreq:
+(1) 1274/    2A08 :                     ; 		move.b	(a0)+,d1
+(1) 1275/    2A08 :                     ; 		bsr	FM_Set
+(1) 1276/    2A08 :                     ; 		add.w	#1,d0
+(1) 1277/    2A08 :                     ; 		swap	d0
+(1) 1278/    2A08 :                     ; 		move.b	(a0)+,d1
+(1) 1279/    2A08 :                     ; 		bsr	FM_Set
+(1) 1280/    2A08 :                     ; 		add.w	#1,d0
+(1) 1281/    2A08 :                     ; 		swap	d0
+(1) 1282/    2A08 :                     ; 		dbf	d2,.dofreq
+(1) 1283/    2A08 :                     		
+(1) 1284/    2A08 : 303C 00AC           		move.w	#$AC,d0
+(1) 1285/    2A0C : 1218                		move.b	(a0)+,d1
+(1) 1286/    2A0E : 6170                		bsr	FM_Set
+(1) 1287/    2A10 : 303C 00A8           		move.w	#$A8,d0
+(1) 1288/    2A14 : 1218                		move.b	(a0)+,d1
+(1) 1289/    2A16 : 6168                		bsr	FM_Set
+(1) 1290/    2A18 :                     		
+(1) 1291/    2A18 : 303C 00AD           		move.w	#$AD,d0
+(1) 1292/    2A1C : 1218                		move.b	(a0)+,d1
+(1) 1293/    2A1E : 6160                		bsr	FM_Set
+(1) 1294/    2A20 : 303C 00A9           		move.w	#$A9,d0
+(1) 1295/    2A24 : 1218                		move.b	(a0)+,d1
+(1) 1296/    2A26 : 6158                		bsr	FM_Set
+(1) 1297/    2A28 :                     		
+(1) 1298/    2A28 : 303C 00AE           		move.w	#$AE,d0
+(1) 1299/    2A2C : 1218                		move.b	(a0)+,d1
+(1) 1300/    2A2E : 6150                		bsr	FM_Set
+(1) 1301/    2A30 : 303C 00AA           		move.w	#$AA,d0
+(1) 1302/    2A34 : 1218                		move.b	(a0)+,d1
+(1) 1303/    2A36 : 6148                		bsr	FM_Set
+(1) 1304/    2A38 :                     
+(1) 1305/    2A38 : 303C 00A6           		move.w	#$A6,d0
+(1) 1306/    2A3C : 1218                		move.b	(a0)+,d1
+(1) 1307/    2A3E : 6140                		bsr	FM_Set
+(1) 1308/    2A40 : 303C 00A2           		move.w	#$A2,d0
+(1) 1309/    2A44 : 1218                		move.b	(a0)+,d1
+(1) 1310/    2A46 : 6138                		bsr	FM_Set
+(1) 1311/    2A48 :                     
+(1) 1312/    2A48 :                     .noedfreq3:
+(1) 1313/    2A48 : 103C 00B2           		move.b	#$B2,d0
+(1) 1314/    2A4C : 121B                		move.b	(a3)+,d1
+(1) 1315/    2A4E : 6130                		bsr	FM_Set
+(1) 1316/    2A50 : 103C 00B6           		move.b	#$B6,d0
+(1) 1317/    2A54 : 121B                		move.b	(a3)+,d1
+(1) 1318/    2A56 : 823C 00C0           		or.b	#%11000000,d1
+(1) 1319/    2A5A : 6124                		bsr	FM_Set
+(1) 1320/    2A5C :                     		
+(1) 1321/    2A5C : 7027                		moveq	#$27,d0
+(1) 1322/    2A5E : 1239 FFFF 001E      		move.b	(RAM_FM_Intr+fmstru_chnmode),d1
+(1) 1323/    2A64 : 611A                		bsr	FM_Set
+(1) 1324/    2A66 :                     
+(1) 1325/    2A66 : 7028                		moveq	#$28,d0
+(1) 1326/    2A68 : 1239 FFFF 001F      		move.b	(RAM_FM_Intr+fmstru_key),d1
+(1) 1327/    2A6E : 823C 0002           		or.b	#%00000010,d1
+(1) 1328/    2A72 : 610C                		bsr	FM_Set
+(1) 1329/    2A74 : 33FC 0000 00A1 1100 		move.w	#0,(z80_bus).l		; $0000 - Start Z80
+(1) 1330/    2A7C : 4E75                		rts
+(1) 1331/    2A7E :                     
+(1) 1332/    2A7E :                     ; ----------------------------------------------------------------
+(1) 1333/    2A7E :                     
+(1) 1334/    2A7E :                     FM_UpdateFreq:
+(1) 1335/    2A7E :                     ; 		move.w	#$0100,(z80_bus).l	; $0100 - Stop Z80
+(1) 1336/    2A7E :                     ; .waitz:
+(1) 1337/    2A7E :                     ; 		btst	#0,(z80_bus).l		; Z80 stopped?
+(1) 1338/    2A7E :                     ; 		bne.s	.waitz			; If not, wait
+(1) 1339/    2A7E :                     ; 
+(1) 1340/    2A7E :                     ; 		move.w	#0,(z80_bus).l		; $0000 - Start Z80
+(1) 1341/    2A7E : 4E75                		rts
+(1) 1342/    2A80 :                     
+(1) 1343/    2A80 :                     ; ----------------------------------------------------------------
+(1) 1344/    2A80 :                     
+(1) 1345/    2A80 :                     FM_Set:
+(1) 1346/    2A80 : 1839 00A0 4000      		move.b	(ym_ctrl_1).l,d4
+(1) 1347/    2A86 : 0804 0007           		btst	#7,d4
+(1) 1348/    2A8A : 66F4                		bne.s	FM_Set
+(1) 1349/    2A8C : 13C0 00A0 4000      		move.b	d0,(ym_ctrl_1).l
+(1) 1350/    2A92 :                     .wait2:
+(1) 1351/    2A92 : 1839 00A0 4000      		move.b	(ym_ctrl_1).l,d4
+(1) 1352/    2A98 : 0804 0007           		btst	#7,d4
+(1) 1353/    2A9C : 66F4                		bne.s	.wait2
+(1) 1354/    2A9E : 13C1 00A0 4001      		move.b	d1,(ym_data_1).l
+(1) 1355/    2AA4 : 4E75                		rts
+(1) 1356/    2AA6 :                     		
+(1) 1357/    2AA6 :                     ; ====================================================================
+(1) 1358/    2AA6 :                     ; ----------------------------------------------------------------
+(1) 1359/    2AA6 :                     ; Small data
+(1) 1360/    2AA6 :                     ; ----------------------------------------------------------------
+(1) 1361/    2AA6 :                     
+(1) 1362/    2AA6 :                     		align 2
+(1) 1363/    2AA6 :                     List_FixdPals:
+(1) 1364/    2AA6 : 0000 0001 0002 0003 		dc.w 0,1,2,3,4,5,6,7,8,9,10
                     0004 0005 0006 0007 
                     0008 0009 000A      
-(1) 1333/    2A96 : 000C 000D           		dc.w 12,13
-(1) 1334/    2A9A : 000F 0010 0011 0012 		dc.w 15,16,17,18,19,20
+(1) 1365/    2ABC : 000C 000D           		dc.w 12,13
+(1) 1366/    2AC0 : 000F 0010 0011 0012 		dc.w 15,16,17,18,19,20
                     0013 0014           
-(1) 1335/    2AA6 : 0016                		dc.w 22
-(1) 1336/    2AA8 : 594D 3236 3132 2045 Asc_Title:	dc.b "YM2612 Editor",0
+(1) 1367/    2ACC : 0016                		dc.w 22
+(1) 1368/    2ACE : 594D 3236 3132 2045 Asc_Title:	dc.b "YM2612 Editor",0
                     6469 746F 7200      
-(1) 1337/    2AB6 :                     		align 2
-(1) 1338/    2AB6 : 4F50 3120 204F 5032 Asc_OpNames:	dc.b "OP1  OP2  OP3  OP4",0
+(1) 1369/    2ADC :                     		align 2
+(1) 1370/    2ADC : 4F50 3120 204F 5032 Asc_OpNames:	dc.b "OP1  OP2  OP3  OP4",0
                     2020 4F50 3320 204F 
                     5034 00             
-(1) 1339/    2AC9 :                     		align 2
-(1) 1340/    2ACA : 4F4E 2000           Asc_On:		dc.b "ON ",0
-(1) 1341/    2ACE :                     		align 2
-(1) 1342/    2ACE : 4F46 4600           Asc_Off:	dc.b "OFF",0
-(1) 1343/    2AD2 :                     		align 2
-(1) 1344/    2AD2 : 4465 7475 6E65 2020 Asc_Names:	dc.b "Detune            ",0
+(1) 1371/    2AEF :                     		align 2
+(1) 1372/    2AF0 : 4F4E 2000           Asc_On:		dc.b "ON ",0
+(1) 1373/    2AF4 :                     		align 2
+(1) 1374/    2AF4 : 4F46 4600           Asc_Off:	dc.b "OFF",0
+(1) 1375/    2AF8 :                     		align 2
+(1) 1376/    2AF8 : 4465 7475 6E65 2020 Asc_Names:	dc.b "Detune            ",0
                     2020 2020 2020 2020 
                     2020 00             
-(1) 1345/    2AE5 : 4D75 6C74 6970 6C79 		dc.b "Multiply          ",0
+(1) 1377/    2B0B : 4D75 6C74 6970 6C79 		dc.b "Multiply          ",0
                     2020 2020 2020 2020 
                     2020 00             
-(1) 1346/    2AF8 : 546F 7461 6C20 6C65 		dc.b "Total level       ",0
+(1) 1378/    2B1E : 546F 7461 6C20 6C65 		dc.b "Total level       ",0
                     7665 6C20 2020 2020 
                     2020 00             
-(1) 1347/    2B0B : 5261 7465 2073 6361 		dc.b "Rate scaling      ",0
+(1) 1379/    2B31 : 5261 7465 2073 6361 		dc.b "Rate scaling      ",0
                     6C69 6E67 2020 2020 
                     2020 00             
-(1) 1348/    2B1E : 4174 7461 636B 2072 		dc.b "Attack rate       ",0
+(1) 1380/    2B44 : 4174 7461 636B 2072 		dc.b "Attack rate       ",0
                     6174 6520 2020 2020 
                     2020 00             
-(1) 1349/    2B31 : 414D 204D 6F64 6520 		dc.b "AM Mode (AMS Enbl)",0
+(1) 1381/    2B57 : 414D 204D 6F64 6520 		dc.b "AM Mode (AMS Enbl)",0
                     2841 4D53 2045 6E62 
                     6C29 00             
-(1) 1350/    2B44 : 3173 7420 6465 6361 		dc.b "1st decay rate    ",0
+(1) 1382/    2B6A : 3173 7420 6465 6361 		dc.b "1st decay rate    ",0
                     7920 7261 7465 2020 
                     2020 00             
-(1) 1351/    2B57 : 326E 6420 6465 6361 		dc.b "2nd decay rate    ",0
+(1) 1383/    2B7D : 326E 6420 6465 6361 		dc.b "2nd decay rate    ",0
                     7920 7261 7465 2020 
                     2020 00             
-(1) 1352/    2B6A : 5265 6C65 6173 6520 		dc.b "Release rate      ",0
+(1) 1384/    2B90 : 5265 6C65 6173 6520 		dc.b "Release rate      ",0
                     7261 7465 2020 2020 
                     2020 00             
-(1) 1353/    2B7D : 5375 7374 6169 6E20 		dc.b "Sustain level     ",0
+(1) 1385/    2BA3 : 5375 7374 6169 6E20 		dc.b "Sustain level     ",0
                     6C65 7665 6C20 2020 
                     2020 00             
-(1) 1354/    2B90 : 5353 472D 4547 2020 		dc.b "SSG-EG            ",0
+(1) 1386/    2BB6 : 5353 472D 4547 2020 		dc.b "SSG-EG            ",0
                     2020 2020 2020 2020 
                     2020 00             
-(1) 1355/    2BA3 : 00                  		dc.b 0
-(1) 1356/    2BA4 : 4672 6571 7565 6E63 		dc.b "Frequency CH3",0
+(1) 1387/    2BC9 : 00                  		dc.b 0
+(1) 1388/    2BCA : 4672 6571 7565 6E63 		dc.b "Frequency CH3",0
                     7920 4348 3300      
-(1) 1357/    2BB2 : 4E6F 7465 00        		dc.b "Note",0
-(1) 1358/    2BB7 : 00                  		dc.b 0
-(1) 1359/    2BB8 : 4B65 7973 00        		dc.b "Keys",0
-(1) 1360/    2BBD : 4F50 3120 4665 6564 		dc.b "OP1 Feedback",0
+(1) 1389/    2BD8 : 4E6F 7465 00        		dc.b "Note",0
+(1) 1390/    2BDD : 00                  		dc.b 0
+(1) 1391/    2BDE : 4B65 7973 00        		dc.b "Keys",0
+(1) 1392/    2BE3 : 4F50 3120 4665 6564 		dc.b "OP1 Feedback",0
                     6261 636B 00        
-(1) 1361/    2BCA : 416C 676F 7269 7468 		dc.b "Algorithm ",0
+(1) 1393/    2BF0 : 416C 676F 7269 7468 		dc.b "Algorithm ",0
                     6D20 00             
-(1) 1362/    2BD5 : 414D 5300           		dc.b "AMS",0
-(1) 1363/    2BD9 : 464D 5300           		dc.b "FMS",0
-(1) 1364/    2BDD : 4C46 4F00           		dc.b "LFO",0
-(1) 1365/    2BE1 : 00                  		dc.b 0
-(1) 1366/    2BE2 : 5361 7665 2074 6F20 		dc.b "Save to SRAM",0
+(1) 1394/    2BFB : 414D 5300           		dc.b "AMS",0
+(1) 1395/    2BFF : 464D 5300           		dc.b "FMS",0
+(1) 1396/    2C03 : 4C46 4F00           		dc.b "LFO",0
+(1) 1397/    2C07 : 00                  		dc.b 0
+(1) 1398/    2C08 : 5361 7665 2074 6F20 		dc.b "Save to SRAM",0
                     5352 414D 00        
-(1) 1367/    2BEF : FF                  		dc.b -1
-(1) 1368/    2BF0 :                     		align 2
-(1) 1369/    2BF0 : 432D 3000           Asc_NoteNames:	dc.b "C-0",0
-(1) 1370/    2BF4 : 4323 3000           		dc.b "C#0",0
-(1) 1371/    2BF8 : 442D 3000           		dc.b "D-0",0
-(1) 1372/    2BFC : 4423 3000           		dc.b "D#0",0
-(1) 1373/    2C00 : 452D 3000           		dc.b "E-0",0
-(1) 1374/    2C04 : 462D 3000           		dc.b "F-0",0
-(1) 1375/    2C08 : 4623 3000           		dc.b "F#0",0
-(1) 1376/    2C0C : 472D 3000           		dc.b "G-0",0
-(1) 1377/    2C10 : 4723 3000           		dc.b "G#0",0
-(1) 1378/    2C14 : 412D 3000           		dc.b "A-0",0
-(1) 1379/    2C18 : 4123 3000           		dc.b "A#0",0
-(1) 1380/    2C1C : 422D 3000           		dc.b "B-0",0
-(1) 1381/    2C20 : 432D 3100           		dc.b "C-1",0
-(1) 1382/    2C24 : 4323 3100           		dc.b "C#1",0
-(1) 1383/    2C28 : 442D 3100           		dc.b "D-1",0
-(1) 1384/    2C2C : 4423 3100           		dc.b "D#1",0
-(1) 1385/    2C30 : 452D 3100           		dc.b "E-1",0
-(1) 1386/    2C34 : 462D 3100           		dc.b "F-1",0
-(1) 1387/    2C38 : 4623 3100           		dc.b "F#1",0
-(1) 1388/    2C3C : 472D 3100           		dc.b "G-1",0
-(1) 1389/    2C40 : 4723 3100           		dc.b "G#1",0
-(1) 1390/    2C44 : 412D 3100           		dc.b "A-1",0
-(1) 1391/    2C48 : 4123 3100           		dc.b "A#1",0
-(1) 1392/    2C4C : 422D 3100           		dc.b "B-1",0
-(1) 1393/    2C50 : 432D 3200           		dc.b "C-2",0
-(1) 1394/    2C54 : 4323 3200           		dc.b "C#2",0
-(1) 1395/    2C58 : 442D 3200           		dc.b "D-2",0
-(1) 1396/    2C5C : 4423 3200           		dc.b "D#2",0
-(1) 1397/    2C60 : 452D 3200           		dc.b "E-2",0
-(1) 1398/    2C64 : 462D 3200           		dc.b "F-2",0
-(1) 1399/    2C68 : 4623 3200           		dc.b "F#2",0
-(1) 1400/    2C6C : 472D 3200           		dc.b "G-2",0
-(1) 1401/    2C70 : 4723 3200           		dc.b "G#2",0
-(1) 1402/    2C74 : 412D 3200           		dc.b "A-2",0
-(1) 1403/    2C78 : 4123 3200           		dc.b "A#2",0
-(1) 1404/    2C7C : 422D 3200           		dc.b "B-2",0
-(1) 1405/    2C80 : 432D 3300           		dc.b "C-3",0
-(1) 1406/    2C84 : 4323 3300           		dc.b "C#3",0
-(1) 1407/    2C88 : 442D 3300           		dc.b "D-3",0
-(1) 1408/    2C8C : 4423 3300           		dc.b "D#3",0
-(1) 1409/    2C90 : 452D 3300           		dc.b "E-3",0
-(1) 1410/    2C94 : 462D 3300           		dc.b "F-3",0
-(1) 1411/    2C98 : 4623 3300           		dc.b "F#3",0
-(1) 1412/    2C9C : 472D 3300           		dc.b "G-3",0
-(1) 1413/    2CA0 : 4723 3300           		dc.b "G#3",0
-(1) 1414/    2CA4 : 412D 3300           		dc.b "A-3",0
-(1) 1415/    2CA8 : 4123 3300           		dc.b "A#3",0
-(1) 1416/    2CAC : 422D 3300           		dc.b "B-3",0
-(1) 1417/    2CB0 : 432D 3400           		dc.b "C-4",0
-(1) 1418/    2CB4 : 4323 3400           		dc.b "C#4",0
-(1) 1419/    2CB8 : 442D 3400           		dc.b "D-4",0
-(1) 1420/    2CBC : 4423 3400           		dc.b "D#4",0
-(1) 1421/    2CC0 : 452D 3400           		dc.b "E-4",0
-(1) 1422/    2CC4 : 462D 3400           		dc.b "F-4",0
-(1) 1423/    2CC8 : 4623 3400           		dc.b "F#4",0
-(1) 1424/    2CCC : 472D 3400           		dc.b "G-4",0
-(1) 1425/    2CD0 : 4723 3400           		dc.b "G#4",0
-(1) 1426/    2CD4 : 412D 3400           		dc.b "A-4",0
-(1) 1427/    2CD8 : 4123 3400           		dc.b "A#4",0
-(1) 1428/    2CDC : 422D 3400           		dc.b "B-4",0
-(1) 1429/    2CE0 : 432D 3500           		dc.b "C-5",0
-(1) 1430/    2CE4 : 4323 3500           		dc.b "C#5",0
-(1) 1431/    2CE8 : 442D 3500           		dc.b "D-5",0
-(1) 1432/    2CEC : 4423 3500           		dc.b "D#5",0
-(1) 1433/    2CF0 : 452D 3500           		dc.b "E-5",0
-(1) 1434/    2CF4 : 462D 3500           		dc.b "F-5",0
-(1) 1435/    2CF8 : 4623 3500           		dc.b "F#5",0
-(1) 1436/    2CFC : 472D 3500           		dc.b "G-5",0
-(1) 1437/    2D00 : 4723 3500           		dc.b "G#5",0
-(1) 1438/    2D04 : 412D 3500           		dc.b "A-5",0
-(1) 1439/    2D08 : 4123 3500           		dc.b "A#5",0
-(1) 1440/    2D0C : 422D 3500           		dc.b "B-5",0
-(1) 1441/    2D10 : 432D 3600           		dc.b "C-6",0
-(1) 1442/    2D14 : 4323 3600           		dc.b "C#6",0
-(1) 1443/    2D18 : 442D 3600           		dc.b "D-6",0
-(1) 1444/    2D1C : 4423 3600           		dc.b "D#6",0
-(1) 1445/    2D20 : 452D 3600           		dc.b "E-6",0
-(1) 1446/    2D24 : 462D 3600           		dc.b "F-6",0
-(1) 1447/    2D28 : 4623 3600           		dc.b "F#6",0
-(1) 1448/    2D2C : 472D 3600           		dc.b "G-6",0
-(1) 1449/    2D30 : 4723 3600           		dc.b "G#6",0
-(1) 1450/    2D34 : 412D 3600           		dc.b "A-6",0
-(1) 1451/    2D38 : 4123 3600           		dc.b "A#6",0
-(1) 1452/    2D3C : 422D 3600           		dc.b "B-6",0
-(1) 1453/    2D40 : 432D 3700           		dc.b "C-7",0
-(1) 1454/    2D44 : 4323 3700           		dc.b "C#7",0
-(1) 1455/    2D48 : 442D 3700           		dc.b "D-7",0
-(1) 1456/    2D4C : 4423 3700           		dc.b "D#7",0
-(1) 1457/    2D50 : 452D 3700           		dc.b "E-7",0
-(1) 1458/    2D54 : 462D 3700           		dc.b "F-7",0
-(1) 1459/    2D58 : 4623 3700           		dc.b "F#7",0
-(1) 1460/    2D5C : 472D 3700           		dc.b "G-7",0
-(1) 1461/    2D60 : 4723 3700           		dc.b "G#7",0
-(1) 1462/    2D64 : 412D 3700           		dc.b "A-7",0
-(1) 1463/    2D68 : 4123 3700           		dc.b "A#7",0
-(1) 1464/    2D6C : 422D 3700           		dc.b "B-7",0
-(1) 1465/    2D70 :                     		align 2
-(1) 1466/    2D70 :                     List_ShftAnd_1:
-(1) 1467/    2D70 : 0006                		dc.w 6
-(1) 1468/    2D72 :                     	; Detune
-(1) 1469/    2D72 : 0000 1504           		dc.l locate(0,21,4)	; Position
-(1) 1470/    2D76 : 0000                		dc.w 0			; Entry ID
-(1) 1471/    2D78 : 0000                		dc.w fmstru_muldept	; Position
-(1) 1472/    2D7A : 0004                		dc.w 4			; LSR by
-(1) 1473/    2D7C : 0007                		dc.w %00000111		; AND by
-(1) 1474/    2D7E :                     	; Multiply
-(1) 1475/    2D7E : 0000 1505           		dc.l locate(0,21,5)	; Position
-(1) 1476/    2D82 : 0001                		dc.w 1			; Entry ID
-(1) 1477/    2D84 : 0000                		dc.w fmstru_muldept	; Position
-(1) 1478/    2D86 : 0000                		dc.w 0			; LSR by
-(1) 1479/    2D88 : 000F                		dc.w %00001111		; AND by
-(1) 1480/    2D8A :                     	; Rate scaling
-(1) 1481/    2D8A : 0000 1507           		dc.l locate(0,21,7)	; Position
-(1) 1482/    2D8E : 0003                		dc.w 3			; Entry ID
-(1) 1483/    2D90 : 0008                		dc.w fmstru_rateatck	; Position
-(1) 1484/    2D92 : 0006                		dc.w 6			; LSR by
-(1) 1485/    2D94 : 0003                		dc.w %00000011		; AND by
-(1) 1486/    2D96 :                     	; Release rate
-(1) 1487/    2D96 : 0000 150C           		dc.l locate(0,21,12)	; Position
-(1) 1488/    2D9A : 0008                		dc.w 8			; Entry ID
-(1) 1489/    2D9C : 0014                		dc.w fmstru_relsust	; Position
-(1) 1490/    2D9E : 0004                		dc.w 4			; LSR by
-(1) 1491/    2DA0 : 000F                		dc.w %00001111		; AND by
-(1) 1492/    2DA2 :                     	; Sustain level
-(1) 1493/    2DA2 : 0000 150D           		dc.l locate(0,21,13)	; Position
-(1) 1494/    2DA6 : 0009                		dc.w 9			; Entry ID
-(1) 1495/    2DA8 : 0014                		dc.w fmstru_relsust	; Position
-(1) 1496/    2DAA : 0000                		dc.w 0			; LSR by
-(1) 1497/    2DAC : 000F                		dc.w %00001111		; AND by
-(1) 1498/    2DAE :                     	; SSG-EG
-(1) 1499/    2DAE : 0000 150E           		dc.l locate(0,21,14)	; Position
-(1) 1500/    2DB2 : 000A                		dc.w 10			; Entry ID
-(1) 1501/    2DB4 : 0018                		dc.w fmstru_ssgeg	; Position
-(1) 1502/    2DB6 : 0000                		dc.w 0			; LSR by
-(1) 1503/    2DB8 : 000F                		dc.w %00001111		; AND by
-(1) 1504/    2DBA :                     		align 2
-(1) 1505/    2DBA :                     
-(1) 1506/    2DBA :                     List_ShftAnd_2:
-(1) 1507/    2DBA : 0004                		dc.w 4
-(1) 1508/    2DBC :                     	; Total level
-(1) 1509/    2DBC : 0000 1406           		dc.l locate(0,20,6)	; Position
-(1) 1510/    2DC0 : 0002                		dc.w 2			; Entry ID
-(1) 1511/    2DC2 : 0004                		dc.w fmstru_tlevl	; Position
-(1) 1512/    2DC4 : 007F                		dc.w %01111111		; AND by
-(1) 1513/    2DC6 :                     	; Attack rate
-(1) 1514/    2DC6 : 0000 1408           		dc.l locate(0,20,8)	; Position
-(1) 1515/    2DCA : 0004                		dc.w 4			; Entry ID
-(1) 1516/    2DCC : 0008                		dc.w fmstru_rateatck	; Position
-(1) 1517/    2DCE : 001F                		dc.w %00011111		; AND by
-(1) 1518/    2DD0 :                     	; 1st decay rate
-(1) 1519/    2DD0 : 0000 140A           		dc.l locate(0,20,10)	; Position
-(1) 1520/    2DD4 : 0006                		dc.w 6			; Entry ID
-(1) 1521/    2DD6 : 000C                		dc.w fmstru_am1stdec	; Position
-(1) 1522/    2DD8 : 001F                		dc.w %00011111		; AND by
-(1) 1523/    2DDA :                     	; 2nd decay rate
-(1) 1524/    2DDA : 0000 140B           		dc.l locate(0,20,11)	; Position
-(1) 1525/    2DDE : 0007                		dc.w 7			; Entry ID
-(1) 1526/    2DE0 : 0010                		dc.w fmstru_2nddec	; Position
-(1) 1527/    2DE2 : 001F                		dc.w %00011111		; AND by
-(1) 1528/    2DE4 :                     		align 2
-(1) 1529/    2DE4 :                     
-(1) 1530/    2DE4 :                     List_SingleVal:
-(1) 1531/    2DE4 : 0004                		dc.w 4
-(1) 1532/    2DE6 :                     	; Feedback
-(1) 1533/    2DE6 : 0000 1414           		dc.l locate(0,20,20)	; Position
-(1) 1534/    2DEA : 000E                		dc.w 14			; Entry ID
-(1) 1535/    2DEC : 001C                		dc.w fmstru_feedalg	; Position
-(1) 1536/    2DEE : 0003                		dc.w 3			; LSR by
-(1) 1537/    2DF0 : 0007                		dc.w %00000111		; AND by
-(1) 1538/    2DF2 :                     	; Algorithm
-(1) 1539/    2DF2 : 0000 1415           		dc.l locate(0,20,21)	; Position
-(1) 1540/    2DF6 : 000F                		dc.w 15			; Entry ID
-(1) 1541/    2DF8 : 001C                		dc.w fmstru_feedalg	; Position
-(1) 1542/    2DFA : 0000                		dc.w 0			; LSR by
-(1) 1543/    2DFC : 0007                		dc.w %00000111		; AND by
-(1) 1544/    2DFE :                     	; AMS
-(1) 1545/    2DFE : 0000 1416           		dc.l locate(0,20,22)	; Position
-(1) 1546/    2E02 : 0010                		dc.w 16			; Entry ID
-(1) 1547/    2E04 : 001D                		dc.w fmstru_fmsams	; Position
-(1) 1548/    2E06 : 0004                		dc.w 4			; LSR by
-(1) 1549/    2E08 : 0003                		dc.w %00000011		; AND by
-(1) 1550/    2E0A :                     	; FMS
-(1) 1551/    2E0A : 0000 1417           		dc.l locate(0,20,23)	; Position
-(1) 1552/    2E0E : 0011                		dc.w 17			; Entry ID
-(1) 1553/    2E10 : 001D                		dc.w fmstru_fmsams	; Position
-(1) 1554/    2E12 : 0000                		dc.w 0			; LSR by
-(1) 1555/    2E14 : 0007                		dc.w %00000111		; AND by
-(1) 1556/    2E16 :                     		align 2
-(1) 1557/    2E16 :                     
-(1) 1558/    2E16 :                     ; Asc_Title:	dc.b "FM Editor",0
-(1) 1559/    2E16 :                     ; 		dc.b 0
-(1) 1560/    2E16 :                     ; 		dc.b "                   OP1  OP2  OP3  OP4",0
-(1) 1561/    2E16 :                     ; 		dc.b "Channel key On/Off OFF  OFF  OFF  OFF",0
-(1) 1562/    2E16 :                     ; 		dc.b "Detune             00   00   00   00 ",0
-(1) 1563/    2E16 :                     ; 		dc.b "Multiply           00   00   00   00 ",0
-(1) 1564/    2E16 :                     ; 		dc.b "Total level        00   00   00   00 ",0
-(1) 1565/    2E16 :                     ; 		dc.b "Rate scaling       00   00   00   00 ",0
-(1) 1566/    2E16 :                     ; 		dc.b "Attack rate        00   00   00   00 ",0
-(1) 1567/    2E16 :                     ; 		dc.b "AMP Mode On/Off    OFF  OFF  OFF  OFF",0
-(1) 1568/    2E16 :                     ; 		dc.b "1st decay rate     00   00   00   00 ",0
-(1) 1569/    2E16 :                     ; 		dc.b "2nd decay rate     00   00   00   00 ",0
-(1) 1570/    2E16 :                     ; 		dc.b "Release rate       00   00   00   00 ",0
-(1) 1571/    2E16 :                     ; 		dc.b "Sustain level      00   00   00   00 ",0
-(1) 1572/    2E16 :                     ; 		dc.b 0
-(1) 1573/    2E16 :                     ; 		dc.b "Note/Frequency     C-0/0000",0
-(1) 1574/    2E16 :                     ; 		dc.b "CH3 Notes/Freqs    OFF/----",0
-(1) 1575/    2E16 :                     ; 		dc.b "                   OFF/----",0
-(1) 1576/    2E16 :                     ; 		dc.b "                   OFF/----",0		
-(1) 1577/    2E16 :                     ; 		dc.b 0
-(1) 1578/    2E16 :                     ; 		dc.b "Feedback           00 XXXXXXXX",0
-(1) 1579/    2E16 :                     ; 		dc.b "Algorithm          00 XXXXXXXX",0
-(1) 1580/    2E16 :                     ; 		dc.b "                      XXXXXXXX",0
-(1) 1581/    2E16 :                     ; 		dc.b "                      XXXXXXXX",0
-(1) 1582/    2E16 :                     ; 		dc.b 0
-(1) 1583/    2E16 :                     ; 		dc.b "AMS                00",0
-(1) 1584/    2E16 :                     ; 		dc.b "FMS                OFF",0
-(1) 1585/    2E16 :                     ; 		dc.b -1
-(1) 1586/    2E16 :                     ; 		align 2
-(1) 1587/    2E16 :                     
-(1) 1588/    2E16 :                     Pal_FmScreen:
-(1) 1589/    2E16 : 0000 0EEE 0CCC 0AAA 		dc.w $0000,$0EEE,$0CCC,$0AAA,$0888,$0444,$000E,$0008
+(1) 1399/    2C15 : FF                  		dc.b -1
+(1) 1400/    2C16 :                     		align 2
+(1) 1401/    2C16 : 432D 3000           Asc_NoteNames:	dc.b "C-0",0
+(1) 1402/    2C1A : 4323 3000           		dc.b "C#0",0
+(1) 1403/    2C1E : 442D 3000           		dc.b "D-0",0
+(1) 1404/    2C22 : 4423 3000           		dc.b "D#0",0
+(1) 1405/    2C26 : 452D 3000           		dc.b "E-0",0
+(1) 1406/    2C2A : 462D 3000           		dc.b "F-0",0
+(1) 1407/    2C2E : 4623 3000           		dc.b "F#0",0
+(1) 1408/    2C32 : 472D 3000           		dc.b "G-0",0
+(1) 1409/    2C36 : 4723 3000           		dc.b "G#0",0
+(1) 1410/    2C3A : 412D 3000           		dc.b "A-0",0
+(1) 1411/    2C3E : 4123 3000           		dc.b "A#0",0
+(1) 1412/    2C42 : 422D 3000           		dc.b "B-0",0
+(1) 1413/    2C46 : 432D 3100           		dc.b "C-1",0
+(1) 1414/    2C4A : 4323 3100           		dc.b "C#1",0
+(1) 1415/    2C4E : 442D 3100           		dc.b "D-1",0
+(1) 1416/    2C52 : 4423 3100           		dc.b "D#1",0
+(1) 1417/    2C56 : 452D 3100           		dc.b "E-1",0
+(1) 1418/    2C5A : 462D 3100           		dc.b "F-1",0
+(1) 1419/    2C5E : 4623 3100           		dc.b "F#1",0
+(1) 1420/    2C62 : 472D 3100           		dc.b "G-1",0
+(1) 1421/    2C66 : 4723 3100           		dc.b "G#1",0
+(1) 1422/    2C6A : 412D 3100           		dc.b "A-1",0
+(1) 1423/    2C6E : 4123 3100           		dc.b "A#1",0
+(1) 1424/    2C72 : 422D 3100           		dc.b "B-1",0
+(1) 1425/    2C76 : 432D 3200           		dc.b "C-2",0
+(1) 1426/    2C7A : 4323 3200           		dc.b "C#2",0
+(1) 1427/    2C7E : 442D 3200           		dc.b "D-2",0
+(1) 1428/    2C82 : 4423 3200           		dc.b "D#2",0
+(1) 1429/    2C86 : 452D 3200           		dc.b "E-2",0
+(1) 1430/    2C8A : 462D 3200           		dc.b "F-2",0
+(1) 1431/    2C8E : 4623 3200           		dc.b "F#2",0
+(1) 1432/    2C92 : 472D 3200           		dc.b "G-2",0
+(1) 1433/    2C96 : 4723 3200           		dc.b "G#2",0
+(1) 1434/    2C9A : 412D 3200           		dc.b "A-2",0
+(1) 1435/    2C9E : 4123 3200           		dc.b "A#2",0
+(1) 1436/    2CA2 : 422D 3200           		dc.b "B-2",0
+(1) 1437/    2CA6 : 432D 3300           		dc.b "C-3",0
+(1) 1438/    2CAA : 4323 3300           		dc.b "C#3",0
+(1) 1439/    2CAE : 442D 3300           		dc.b "D-3",0
+(1) 1440/    2CB2 : 4423 3300           		dc.b "D#3",0
+(1) 1441/    2CB6 : 452D 3300           		dc.b "E-3",0
+(1) 1442/    2CBA : 462D 3300           		dc.b "F-3",0
+(1) 1443/    2CBE : 4623 3300           		dc.b "F#3",0
+(1) 1444/    2CC2 : 472D 3300           		dc.b "G-3",0
+(1) 1445/    2CC6 : 4723 3300           		dc.b "G#3",0
+(1) 1446/    2CCA : 412D 3300           		dc.b "A-3",0
+(1) 1447/    2CCE : 4123 3300           		dc.b "A#3",0
+(1) 1448/    2CD2 : 422D 3300           		dc.b "B-3",0
+(1) 1449/    2CD6 : 432D 3400           		dc.b "C-4",0
+(1) 1450/    2CDA : 4323 3400           		dc.b "C#4",0
+(1) 1451/    2CDE : 442D 3400           		dc.b "D-4",0
+(1) 1452/    2CE2 : 4423 3400           		dc.b "D#4",0
+(1) 1453/    2CE6 : 452D 3400           		dc.b "E-4",0
+(1) 1454/    2CEA : 462D 3400           		dc.b "F-4",0
+(1) 1455/    2CEE : 4623 3400           		dc.b "F#4",0
+(1) 1456/    2CF2 : 472D 3400           		dc.b "G-4",0
+(1) 1457/    2CF6 : 4723 3400           		dc.b "G#4",0
+(1) 1458/    2CFA : 412D 3400           		dc.b "A-4",0
+(1) 1459/    2CFE : 4123 3400           		dc.b "A#4",0
+(1) 1460/    2D02 : 422D 3400           		dc.b "B-4",0
+(1) 1461/    2D06 : 432D 3500           		dc.b "C-5",0
+(1) 1462/    2D0A : 4323 3500           		dc.b "C#5",0
+(1) 1463/    2D0E : 442D 3500           		dc.b "D-5",0
+(1) 1464/    2D12 : 4423 3500           		dc.b "D#5",0
+(1) 1465/    2D16 : 452D 3500           		dc.b "E-5",0
+(1) 1466/    2D1A : 462D 3500           		dc.b "F-5",0
+(1) 1467/    2D1E : 4623 3500           		dc.b "F#5",0
+(1) 1468/    2D22 : 472D 3500           		dc.b "G-5",0
+(1) 1469/    2D26 : 4723 3500           		dc.b "G#5",0
+(1) 1470/    2D2A : 412D 3500           		dc.b "A-5",0
+(1) 1471/    2D2E : 4123 3500           		dc.b "A#5",0
+(1) 1472/    2D32 : 422D 3500           		dc.b "B-5",0
+(1) 1473/    2D36 : 432D 3600           		dc.b "C-6",0
+(1) 1474/    2D3A : 4323 3600           		dc.b "C#6",0
+(1) 1475/    2D3E : 442D 3600           		dc.b "D-6",0
+(1) 1476/    2D42 : 4423 3600           		dc.b "D#6",0
+(1) 1477/    2D46 : 452D 3600           		dc.b "E-6",0
+(1) 1478/    2D4A : 462D 3600           		dc.b "F-6",0
+(1) 1479/    2D4E : 4623 3600           		dc.b "F#6",0
+(1) 1480/    2D52 : 472D 3600           		dc.b "G-6",0
+(1) 1481/    2D56 : 4723 3600           		dc.b "G#6",0
+(1) 1482/    2D5A : 412D 3600           		dc.b "A-6",0
+(1) 1483/    2D5E : 4123 3600           		dc.b "A#6",0
+(1) 1484/    2D62 : 422D 3600           		dc.b "B-6",0
+(1) 1485/    2D66 : 432D 3700           		dc.b "C-7",0
+(1) 1486/    2D6A : 4323 3700           		dc.b "C#7",0
+(1) 1487/    2D6E : 442D 3700           		dc.b "D-7",0
+(1) 1488/    2D72 : 4423 3700           		dc.b "D#7",0
+(1) 1489/    2D76 : 452D 3700           		dc.b "E-7",0
+(1) 1490/    2D7A : 462D 3700           		dc.b "F-7",0
+(1) 1491/    2D7E : 4623 3700           		dc.b "F#7",0
+(1) 1492/    2D82 : 472D 3700           		dc.b "G-7",0
+(1) 1493/    2D86 : 4723 3700           		dc.b "G#7",0
+(1) 1494/    2D8A : 412D 3700           		dc.b "A-7",0
+(1) 1495/    2D8E : 4123 3700           		dc.b "A#7",0
+(1) 1496/    2D92 : 422D 3700           		dc.b "B-7",0
+(1) 1497/    2D96 :                     		align 2
+(1) 1498/    2D96 :                     List_ShftAnd_1:
+(1) 1499/    2D96 : 0006                		dc.w 6
+(1) 1500/    2D98 :                     	; Detune
+(1) 1501/    2D98 : 0000 1504           		dc.l locate(0,21,4)	; Position
+(1) 1502/    2D9C : 0000                		dc.w 0			; Entry ID
+(1) 1503/    2D9E : 0000                		dc.w fmstru_muldept	; Position
+(1) 1504/    2DA0 : 0004                		dc.w 4			; LSR by
+(1) 1505/    2DA2 : 0007                		dc.w %00000111		; AND by
+(1) 1506/    2DA4 :                     	; Multiply
+(1) 1507/    2DA4 : 0000 1505           		dc.l locate(0,21,5)	; Position
+(1) 1508/    2DA8 : 0001                		dc.w 1			; Entry ID
+(1) 1509/    2DAA : 0000                		dc.w fmstru_muldept	; Position
+(1) 1510/    2DAC : 0000                		dc.w 0			; LSR by
+(1) 1511/    2DAE : 000F                		dc.w %00001111		; AND by
+(1) 1512/    2DB0 :                     	; Rate scaling
+(1) 1513/    2DB0 : 0000 1507           		dc.l locate(0,21,7)	; Position
+(1) 1514/    2DB4 : 0003                		dc.w 3			; Entry ID
+(1) 1515/    2DB6 : 0008                		dc.w fmstru_rateatck	; Position
+(1) 1516/    2DB8 : 0006                		dc.w 6			; LSR by
+(1) 1517/    2DBA : 0003                		dc.w %00000011		; AND by
+(1) 1518/    2DBC :                     	; Release rate
+(1) 1519/    2DBC : 0000 150C           		dc.l locate(0,21,12)	; Position
+(1) 1520/    2DC0 : 0008                		dc.w 8			; Entry ID
+(1) 1521/    2DC2 : 0014                		dc.w fmstru_relsust	; Position
+(1) 1522/    2DC4 : 0004                		dc.w 4			; LSR by
+(1) 1523/    2DC6 : 000F                		dc.w %00001111		; AND by
+(1) 1524/    2DC8 :                     	; Sustain level
+(1) 1525/    2DC8 : 0000 150D           		dc.l locate(0,21,13)	; Position
+(1) 1526/    2DCC : 0009                		dc.w 9			; Entry ID
+(1) 1527/    2DCE : 0014                		dc.w fmstru_relsust	; Position
+(1) 1528/    2DD0 : 0000                		dc.w 0			; LSR by
+(1) 1529/    2DD2 : 000F                		dc.w %00001111		; AND by
+(1) 1530/    2DD4 :                     	; SSG-EG
+(1) 1531/    2DD4 : 0000 150E           		dc.l locate(0,21,14)	; Position
+(1) 1532/    2DD8 : 000A                		dc.w 10			; Entry ID
+(1) 1533/    2DDA : 0018                		dc.w fmstru_ssgeg	; Position
+(1) 1534/    2DDC : 0000                		dc.w 0			; LSR by
+(1) 1535/    2DDE : 000F                		dc.w %00001111		; AND by
+(1) 1536/    2DE0 :                     		align 2
+(1) 1537/    2DE0 :                     
+(1) 1538/    2DE0 :                     List_ShftAnd_2:
+(1) 1539/    2DE0 : 0004                		dc.w 4
+(1) 1540/    2DE2 :                     	; Total level
+(1) 1541/    2DE2 : 0000 1406           		dc.l locate(0,20,6)	; Position
+(1) 1542/    2DE6 : 0002                		dc.w 2			; Entry ID
+(1) 1543/    2DE8 : 0004                		dc.w fmstru_tlevl	; Position
+(1) 1544/    2DEA : 007F                		dc.w %01111111		; AND by
+(1) 1545/    2DEC :                     	; Attack rate
+(1) 1546/    2DEC : 0000 1408           		dc.l locate(0,20,8)	; Position
+(1) 1547/    2DF0 : 0004                		dc.w 4			; Entry ID
+(1) 1548/    2DF2 : 0008                		dc.w fmstru_rateatck	; Position
+(1) 1549/    2DF4 : 001F                		dc.w %00011111		; AND by
+(1) 1550/    2DF6 :                     	; 1st decay rate
+(1) 1551/    2DF6 : 0000 140A           		dc.l locate(0,20,10)	; Position
+(1) 1552/    2DFA : 0006                		dc.w 6			; Entry ID
+(1) 1553/    2DFC : 000C                		dc.w fmstru_am1stdec	; Position
+(1) 1554/    2DFE : 001F                		dc.w %00011111		; AND by
+(1) 1555/    2E00 :                     	; 2nd decay rate
+(1) 1556/    2E00 : 0000 140B           		dc.l locate(0,20,11)	; Position
+(1) 1557/    2E04 : 0007                		dc.w 7			; Entry ID
+(1) 1558/    2E06 : 0010                		dc.w fmstru_2nddec	; Position
+(1) 1559/    2E08 : 001F                		dc.w %00011111		; AND by
+(1) 1560/    2E0A :                     		align 2
+(1) 1561/    2E0A :                     
+(1) 1562/    2E0A :                     List_SingleVal:
+(1) 1563/    2E0A : 0004                		dc.w 4
+(1) 1564/    2E0C :                     	; Feedback
+(1) 1565/    2E0C : 0000 1414           		dc.l locate(0,20,20)	; Position
+(1) 1566/    2E10 : 000E                		dc.w 14			; Entry ID
+(1) 1567/    2E12 : 001C                		dc.w fmstru_feedalg	; Position
+(1) 1568/    2E14 : 0003                		dc.w 3			; LSR by
+(1) 1569/    2E16 : 0007                		dc.w %00000111		; AND by
+(1) 1570/    2E18 :                     	; Algorithm
+(1) 1571/    2E18 : 0000 1415           		dc.l locate(0,20,21)	; Position
+(1) 1572/    2E1C : 000F                		dc.w 15			; Entry ID
+(1) 1573/    2E1E : 001C                		dc.w fmstru_feedalg	; Position
+(1) 1574/    2E20 : 0000                		dc.w 0			; LSR by
+(1) 1575/    2E22 : 0007                		dc.w %00000111		; AND by
+(1) 1576/    2E24 :                     	; AMS
+(1) 1577/    2E24 : 0000 1416           		dc.l locate(0,20,22)	; Position
+(1) 1578/    2E28 : 0010                		dc.w 16			; Entry ID
+(1) 1579/    2E2A : 001D                		dc.w fmstru_fmsams	; Position
+(1) 1580/    2E2C : 0004                		dc.w 4			; LSR by
+(1) 1581/    2E2E : 0003                		dc.w %00000011		; AND by
+(1) 1582/    2E30 :                     	; FMS
+(1) 1583/    2E30 : 0000 1417           		dc.l locate(0,20,23)	; Position
+(1) 1584/    2E34 : 0011                		dc.w 17			; Entry ID
+(1) 1585/    2E36 : 001D                		dc.w fmstru_fmsams	; Position
+(1) 1586/    2E38 : 0000                		dc.w 0			; LSR by
+(1) 1587/    2E3A : 0007                		dc.w %00000111		; AND by
+(1) 1588/    2E3C :                     		align 2
+(1) 1589/    2E3C :                     
+(1) 1590/    2E3C :                     ; Asc_Title:	dc.b "FM Editor",0
+(1) 1591/    2E3C :                     ; 		dc.b 0
+(1) 1592/    2E3C :                     ; 		dc.b "                   OP1  OP2  OP3  OP4",0
+(1) 1593/    2E3C :                     ; 		dc.b "Channel key On/Off OFF  OFF  OFF  OFF",0
+(1) 1594/    2E3C :                     ; 		dc.b "Detune             00   00   00   00 ",0
+(1) 1595/    2E3C :                     ; 		dc.b "Multiply           00   00   00   00 ",0
+(1) 1596/    2E3C :                     ; 		dc.b "Total level        00   00   00   00 ",0
+(1) 1597/    2E3C :                     ; 		dc.b "Rate scaling       00   00   00   00 ",0
+(1) 1598/    2E3C :                     ; 		dc.b "Attack rate        00   00   00   00 ",0
+(1) 1599/    2E3C :                     ; 		dc.b "AMP Mode On/Off    OFF  OFF  OFF  OFF",0
+(1) 1600/    2E3C :                     ; 		dc.b "1st decay rate     00   00   00   00 ",0
+(1) 1601/    2E3C :                     ; 		dc.b "2nd decay rate     00   00   00   00 ",0
+(1) 1602/    2E3C :                     ; 		dc.b "Release rate       00   00   00   00 ",0
+(1) 1603/    2E3C :                     ; 		dc.b "Sustain level      00   00   00   00 ",0
+(1) 1604/    2E3C :                     ; 		dc.b 0
+(1) 1605/    2E3C :                     ; 		dc.b "Note/Frequency     C-0/0000",0
+(1) 1606/    2E3C :                     ; 		dc.b "CH3 Notes/Freqs    OFF/----",0
+(1) 1607/    2E3C :                     ; 		dc.b "                   OFF/----",0
+(1) 1608/    2E3C :                     ; 		dc.b "                   OFF/----",0		
+(1) 1609/    2E3C :                     ; 		dc.b 0
+(1) 1610/    2E3C :                     ; 		dc.b "Feedback           00 XXXXXXXX",0
+(1) 1611/    2E3C :                     ; 		dc.b "Algorithm          00 XXXXXXXX",0
+(1) 1612/    2E3C :                     ; 		dc.b "                      XXXXXXXX",0
+(1) 1613/    2E3C :                     ; 		dc.b "                      XXXXXXXX",0
+(1) 1614/    2E3C :                     ; 		dc.b 0
+(1) 1615/    2E3C :                     ; 		dc.b "AMS                00",0
+(1) 1616/    2E3C :                     ; 		dc.b "FMS                OFF",0
+(1) 1617/    2E3C :                     ; 		dc.b -1
+(1) 1618/    2E3C :                     ; 		align 2
+(1) 1619/    2E3C :                     
+(1) 1620/    2E3C :                     Pal_FmScreen:
+(1) 1621/    2E3C : 0000 0EEE 0CCC 0AAA 		dc.w $0000,$0EEE,$0CCC,$0AAA,$0888,$0444,$000E,$0008
                     0888 0444 000E 0008 
-(1) 1590/    2E26 : 00EE 0088 00E0 0080 		dc.w $00EE,$0088,$00E0,$0080,$0E00,$0800,$0000,$0000
+(1) 1622/    2E4C : 00EE 0088 00E0 0080 		dc.w $00EE,$0088,$00E0,$0080,$0E00,$0800,$0000,$0000
                     0E00 0800 0000 0000 
-(1) 1591/    2E36 : 0000 00AE 008C 006A 		dc.w $0000,$00AE,$008C,$006A,$0048,$0024,$000E,$0008
+(1) 1623/    2E5C : 0000 00AE 008C 006A 		dc.w $0000,$00AE,$008C,$006A,$0048,$0024,$000E,$0008
                     0048 0024 000E 0008 
-(1) 1592/    2E46 : 00EE 0088 00E0 0080 		dc.w $00EE,$0088,$00E0,$0080,$0E00,$0800,$0000,$0000
+(1) 1624/    2E6C : 00EE 0088 00E0 0080 		dc.w $00EE,$0088,$00E0,$0080,$0E00,$0800,$0000,$0000
                     0E00 0800 0000 0000 
-(1) 1593/    2E56 : 0000 0AAA 0888 0666 		dc.w $0000,$0AAA,$0888,$0666,$0444,$0222,$0000,$0000
+(1) 1625/    2E7C : 0000 0AAA 0888 0666 		dc.w $0000,$0AAA,$0888,$0666,$0444,$0222,$0000,$0000
                     0444 0222 0000 0000 
-(1) 1594/    2E66 : 0000 0000 0000 0000 		dc.w $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+(1) 1626/    2E8C : 0000 0000 0000 0000 		dc.w $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
                     0000 0000 0000 0000 
-(1) 1595/    2E76 : 0000 0E00 0C00 0A00 		dc.w $0000,$0E00,$0C00,$0A00,$0800,$0400,$0000,$0000
+(1) 1627/    2E9C : 0000 0E00 0C00 0A00 		dc.w $0000,$0E00,$0C00,$0A00,$0800,$0400,$0000,$0000
                     0800 0400 0000 0000 
-(1) 1596/    2E86 : 0000 0000 0000 0000 		dc.w $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+(1) 1628/    2EAC : 0000 0000 0000 0000 		dc.w $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
                     0000 0000 0000 0000 
-(1) 1597/    2E96 :                     		align 2
-(1) 1598/    2E96 :                     
-(1) 1599/    2E96 :                     FmData_FreqList:
-(1) 1600/    2E96 : 0284                		dc.w 644		; C-0
-(1) 1601/    2E98 : 02A9                		dc.w 681
-(1) 1602/    2E9A : 02D2                		dc.w 722
-(1) 1603/    2E9C : 02FD                		dc.w 765
-(1) 1604/    2E9E : 032A                		dc.w 810
-(1) 1605/    2EA0 : 035A                		dc.w 858
-(1) 1606/    2EA2 : 038E                		dc.w 910
-(1) 1607/    2EA4 : 03C4                		dc.w 964
-(1) 1608/    2EA6 : 03FD                		dc.w 1021
-(1) 1609/    2EA8 : 0439                		dc.w 1081
-(1) 1610/    2EAA : 047A                		dc.w 1146
-(1) 1611/    2EAC : 04BE                		dc.w 1214
-(1) 1612/    2EAE : 0A84                		dc.w 644|$800		; C-1
-(1) 1613/    2EB0 : 0AA9                		dc.w 681|$800
-(1) 1614/    2EB2 : 0AD2                		dc.w 722|$800
-(1) 1615/    2EB4 : 0AFD                		dc.w 765|$800
-(1) 1616/    2EB6 : 0B2A                		dc.w 810|$800
-(1) 1617/    2EB8 : 0B5A                		dc.w 858|$800
-(1) 1618/    2EBA : 0B8E                		dc.w 910|$800
-(1) 1619/    2EBC : 0BC4                		dc.w 964|$800
-(1) 1620/    2EBE : 0BFD                		dc.w 1021|$800
-(1) 1621/    2EC0 : 0C39                		dc.w 1081|$800
-(1) 1622/    2EC2 : 0C7A                		dc.w 1146|$800
-(1) 1623/    2EC4 : 0CBE                		dc.w 1214|$800
-(1) 1624/    2EC6 : 1284                		dc.w 644|$1000		; C-2
-(1) 1625/    2EC8 : 12A9                		dc.w 681|$1000
-(1) 1626/    2ECA : 12D2                		dc.w 722|$1000
-(1) 1627/    2ECC : 12FD                		dc.w 765|$1000
-(1) 1628/    2ECE : 132A                		dc.w 810|$1000
-(1) 1629/    2ED0 : 135A                		dc.w 858|$1000
-(1) 1630/    2ED2 : 138E                		dc.w 910|$1000
-(1) 1631/    2ED4 : 13C4                		dc.w 964|$1000
-(1) 1632/    2ED6 : 13FD                		dc.w 1021|$1000
-(1) 1633/    2ED8 : 1439                		dc.w 1081|$1000
-(1) 1634/    2EDA : 147A                		dc.w 1146|$1000
-(1) 1635/    2EDC : 14BE                		dc.w 1214|$1000
-(1) 1636/    2EDE : 1A84                		dc.w 644|$1800		; C-3
-(1) 1637/    2EE0 : 1AA9                		dc.w 681|$1800
-(1) 1638/    2EE2 : 1AD2                		dc.w 722|$1800
-(1) 1639/    2EE4 : 1AFD                		dc.w 765|$1800
-(1) 1640/    2EE6 : 1B2A                		dc.w 810|$1800
-(1) 1641/    2EE8 : 1B5A                		dc.w 858|$1800
-(1) 1642/    2EEA : 1B8E                		dc.w 910|$1800
-(1) 1643/    2EEC : 1BC4                		dc.w 964|$1800
-(1) 1644/    2EEE : 1BFD                		dc.w 1021|$1800
-(1) 1645/    2EF0 : 1C39                		dc.w 1081|$1800
-(1) 1646/    2EF2 : 1C7A                		dc.w 1146|$1800
-(1) 1647/    2EF4 : 1CBE                		dc.w 1214|$1800
-(1) 1648/    2EF6 : 2284                		dc.w 644|$2000		; C-4
-(1) 1649/    2EF8 : 22A9                		dc.w 681|$2000
-(1) 1650/    2EFA : 22D2                		dc.w 722|$2000
-(1) 1651/    2EFC : 22FD                		dc.w 765|$2000
-(1) 1652/    2EFE : 232A                		dc.w 810|$2000
-(1) 1653/    2F00 : 235A                		dc.w 858|$2000
-(1) 1654/    2F02 : 238E                		dc.w 910|$2000
-(1) 1655/    2F04 : 23C4                		dc.w 964|$2000
-(1) 1656/    2F06 : 23FD                		dc.w 1021|$2000
-(1) 1657/    2F08 : 2439                		dc.w 1081|$2000
-(1) 1658/    2F0A : 247A                		dc.w 1146|$2000
-(1) 1659/    2F0C : 24BE                		dc.w 1214|$2000
-(1) 1660/    2F0E : 2A84                		dc.w 644|$2800		; C-5
-(1) 1661/    2F10 : 2AA9                		dc.w 681|$2800
-(1) 1662/    2F12 : 2AD2                		dc.w 722|$2800
-(1) 1663/    2F14 : 2AFD                		dc.w 765|$2800
-(1) 1664/    2F16 : 2B2A                		dc.w 810|$2800
-(1) 1665/    2F18 : 2B5A                		dc.w 858|$2800
-(1) 1666/    2F1A : 2B8E                		dc.w 910|$2800
-(1) 1667/    2F1C : 2BC4                		dc.w 964|$2800
-(1) 1668/    2F1E : 2BFD                		dc.w 1021|$2800
-(1) 1669/    2F20 : 2C39                		dc.w 1081|$2800
-(1) 1670/    2F22 : 2C7A                		dc.w 1146|$2800
-(1) 1671/    2F24 : 2CBE                		dc.w 1214|$2800		
-(1) 1672/    2F26 : 3284                		dc.w 644|$3000		; C-6
-(1) 1673/    2F28 : 32A9                		dc.w 681|$3000
-(1) 1674/    2F2A : 32D2                		dc.w 722|$3000
-(1) 1675/    2F2C : 32FD                		dc.w 765|$3000
-(1) 1676/    2F2E : 332A                		dc.w 810|$3000
-(1) 1677/    2F30 : 335A                		dc.w 858|$3000
-(1) 1678/    2F32 : 338E                		dc.w 910|$3000
-(1) 1679/    2F34 : 33C4                		dc.w 964|$3000
-(1) 1680/    2F36 : 33FD                		dc.w 1021|$3000
-(1) 1681/    2F38 : 3439                		dc.w 1081|$3000
-(1) 1682/    2F3A : 347A                		dc.w 1146|$3000
-(1) 1683/    2F3C : 34BE                		dc.w 1214|$3000
-(1) 1684/    2F3E : 3A84                		dc.w 644|$3800		; C-7
-(1) 1685/    2F40 : 3AA9                		dc.w 681|$3800
-(1) 1686/    2F42 : 3AD2                		dc.w 722|$3800
-(1) 1687/    2F44 : 3AFD                		dc.w 765|$3800
-(1) 1688/    2F46 : 3B2A                		dc.w 810|$3800
-(1) 1689/    2F48 : 3B5A                		dc.w 858|$3800
-(1) 1690/    2F4A : 3B8E                		dc.w 910|$3800
-(1) 1691/    2F4C : 3BC4                		dc.w 964|$3800
-(1) 1692/    2F4E : 3BFD                		dc.w 1021|$3800
-(1) 1693/    2F50 : 3C39                		dc.w 1081|$3800
-(1) 1694/    2F52 : 3C7A                		dc.w 1146|$3800
-(1) 1695/    2F54 : 3CBE                		dc.w 1214|$3800
-(1) 1696/    2F56 :                     		align 2
-(1) 1697/    2F56 :                     
-(1) 1698/    2F56 :                     		align $10
-(1) 1699/    2F60 : 4445 4641 554C 5420 		dc.b "DEFAULT FM DATA>"
+(1) 1629/    2EBC :                     		align 2
+(1) 1630/    2EBC :                     
+(1) 1631/    2EBC :                     FmData_FreqList:
+(1) 1632/    2EBC : 0284                		dc.w 644		; C-0
+(1) 1633/    2EBE : 02A9                		dc.w 681
+(1) 1634/    2EC0 : 02D2                		dc.w 722
+(1) 1635/    2EC2 : 02FD                		dc.w 765
+(1) 1636/    2EC4 : 032A                		dc.w 810
+(1) 1637/    2EC6 : 035A                		dc.w 858
+(1) 1638/    2EC8 : 038E                		dc.w 910
+(1) 1639/    2ECA : 03C4                		dc.w 964
+(1) 1640/    2ECC : 03FD                		dc.w 1021
+(1) 1641/    2ECE : 0439                		dc.w 1081
+(1) 1642/    2ED0 : 047A                		dc.w 1146
+(1) 1643/    2ED2 : 04BE                		dc.w 1214
+(1) 1644/    2ED4 : 0A84                		dc.w 644|$800		; C-1
+(1) 1645/    2ED6 : 0AA9                		dc.w 681|$800
+(1) 1646/    2ED8 : 0AD2                		dc.w 722|$800
+(1) 1647/    2EDA : 0AFD                		dc.w 765|$800
+(1) 1648/    2EDC : 0B2A                		dc.w 810|$800
+(1) 1649/    2EDE : 0B5A                		dc.w 858|$800
+(1) 1650/    2EE0 : 0B8E                		dc.w 910|$800
+(1) 1651/    2EE2 : 0BC4                		dc.w 964|$800
+(1) 1652/    2EE4 : 0BFD                		dc.w 1021|$800
+(1) 1653/    2EE6 : 0C39                		dc.w 1081|$800
+(1) 1654/    2EE8 : 0C7A                		dc.w 1146|$800
+(1) 1655/    2EEA : 0CBE                		dc.w 1214|$800
+(1) 1656/    2EEC : 1284                		dc.w 644|$1000		; C-2
+(1) 1657/    2EEE : 12A9                		dc.w 681|$1000
+(1) 1658/    2EF0 : 12D2                		dc.w 722|$1000
+(1) 1659/    2EF2 : 12FD                		dc.w 765|$1000
+(1) 1660/    2EF4 : 132A                		dc.w 810|$1000
+(1) 1661/    2EF6 : 135A                		dc.w 858|$1000
+(1) 1662/    2EF8 : 138E                		dc.w 910|$1000
+(1) 1663/    2EFA : 13C4                		dc.w 964|$1000
+(1) 1664/    2EFC : 13FD                		dc.w 1021|$1000
+(1) 1665/    2EFE : 1439                		dc.w 1081|$1000
+(1) 1666/    2F00 : 147A                		dc.w 1146|$1000
+(1) 1667/    2F02 : 14BE                		dc.w 1214|$1000
+(1) 1668/    2F04 : 1A84                		dc.w 644|$1800		; C-3
+(1) 1669/    2F06 : 1AA9                		dc.w 681|$1800
+(1) 1670/    2F08 : 1AD2                		dc.w 722|$1800
+(1) 1671/    2F0A : 1AFD                		dc.w 765|$1800
+(1) 1672/    2F0C : 1B2A                		dc.w 810|$1800
+(1) 1673/    2F0E : 1B5A                		dc.w 858|$1800
+(1) 1674/    2F10 : 1B8E                		dc.w 910|$1800
+(1) 1675/    2F12 : 1BC4                		dc.w 964|$1800
+(1) 1676/    2F14 : 1BFD                		dc.w 1021|$1800
+(1) 1677/    2F16 : 1C39                		dc.w 1081|$1800
+(1) 1678/    2F18 : 1C7A                		dc.w 1146|$1800
+(1) 1679/    2F1A : 1CBE                		dc.w 1214|$1800
+(1) 1680/    2F1C : 2284                		dc.w 644|$2000		; C-4
+(1) 1681/    2F1E : 22A9                		dc.w 681|$2000
+(1) 1682/    2F20 : 22D2                		dc.w 722|$2000
+(1) 1683/    2F22 : 22FD                		dc.w 765|$2000
+(1) 1684/    2F24 : 232A                		dc.w 810|$2000
+(1) 1685/    2F26 : 235A                		dc.w 858|$2000
+(1) 1686/    2F28 : 238E                		dc.w 910|$2000
+(1) 1687/    2F2A : 23C4                		dc.w 964|$2000
+(1) 1688/    2F2C : 23FD                		dc.w 1021|$2000
+(1) 1689/    2F2E : 2439                		dc.w 1081|$2000
+(1) 1690/    2F30 : 247A                		dc.w 1146|$2000
+(1) 1691/    2F32 : 24BE                		dc.w 1214|$2000
+(1) 1692/    2F34 : 2A84                		dc.w 644|$2800		; C-5
+(1) 1693/    2F36 : 2AA9                		dc.w 681|$2800
+(1) 1694/    2F38 : 2AD2                		dc.w 722|$2800
+(1) 1695/    2F3A : 2AFD                		dc.w 765|$2800
+(1) 1696/    2F3C : 2B2A                		dc.w 810|$2800
+(1) 1697/    2F3E : 2B5A                		dc.w 858|$2800
+(1) 1698/    2F40 : 2B8E                		dc.w 910|$2800
+(1) 1699/    2F42 : 2BC4                		dc.w 964|$2800
+(1) 1700/    2F44 : 2BFD                		dc.w 1021|$2800
+(1) 1701/    2F46 : 2C39                		dc.w 1081|$2800
+(1) 1702/    2F48 : 2C7A                		dc.w 1146|$2800
+(1) 1703/    2F4A : 2CBE                		dc.w 1214|$2800		
+(1) 1704/    2F4C : 3284                		dc.w 644|$3000		; C-6
+(1) 1705/    2F4E : 32A9                		dc.w 681|$3000
+(1) 1706/    2F50 : 32D2                		dc.w 722|$3000
+(1) 1707/    2F52 : 32FD                		dc.w 765|$3000
+(1) 1708/    2F54 : 332A                		dc.w 810|$3000
+(1) 1709/    2F56 : 335A                		dc.w 858|$3000
+(1) 1710/    2F58 : 338E                		dc.w 910|$3000
+(1) 1711/    2F5A : 33C4                		dc.w 964|$3000
+(1) 1712/    2F5C : 33FD                		dc.w 1021|$3000
+(1) 1713/    2F5E : 3439                		dc.w 1081|$3000
+(1) 1714/    2F60 : 347A                		dc.w 1146|$3000
+(1) 1715/    2F62 : 34BE                		dc.w 1214|$3000
+(1) 1716/    2F64 : 3A84                		dc.w 644|$3800		; C-7
+(1) 1717/    2F66 : 3AA9                		dc.w 681|$3800
+(1) 1718/    2F68 : 3AD2                		dc.w 722|$3800
+(1) 1719/    2F6A : 3AFD                		dc.w 765|$3800
+(1) 1720/    2F6C : 3B2A                		dc.w 810|$3800
+(1) 1721/    2F6E : 3B5A                		dc.w 858|$3800
+(1) 1722/    2F70 : 3B8E                		dc.w 910|$3800
+(1) 1723/    2F72 : 3BC4                		dc.w 964|$3800
+(1) 1724/    2F74 : 3BFD                		dc.w 1021|$3800
+(1) 1725/    2F76 : 3C39                		dc.w 1081|$3800
+(1) 1726/    2F78 : 3C7A                		dc.w 1146|$3800
+(1) 1727/    2F7A : 3CBE                		dc.w 1214|$3800
+(1) 1728/    2F7C :                     		align 2
+(1) 1729/    2F7C :                     
+(1) 1730/    2F7C :                     		align $10
+(1) 1731/    2F80 : 4445 4641 554C 5420 		dc.b "DEFAULT FM DATA>"
                     464D 2044 4154 413E 
-(1) 1700/    2F70 :                     FmData_Default:
-(1) 1701/    2F70 : 0000 0000           		dc.b $00,$00,$00,$00
-(1) 1702/    2F74 : 0000 0000           		dc.b $00,$00,$00,$00
-(1) 1703/    2F78 : 0000 0000           		dc.b $00,$00,$00,$00
-(1) 1704/    2F7C : 0000 0000           		dc.b $00,$00,$00,$00
-(1) 1705/    2F80 : 0000 0000           		dc.b $00,$00,$00,$00
-(1) 1706/    2F84 : 0000 0000           		dc.b $00,$00,$00,$00
-(1) 1707/    2F88 : 0000 0000           		dc.b $00,$00,$00,$00
-(1) 1708/    2F8C : 00                  		dc.b $00
-(1) 1709/    2F8D : 00                  		dc.b $00
-(1) 1710/    2F8E : 00                  		dc.b $00
-(1) 1711/    2F8F : F0                  		dc.b $F0
-(1) 1712/    2F90 :                     		align 2
-(1) 1713/    2F90 :                     
-      76/    2F90 :                     CodeBank_e:
-      77/    2F90 :                     
-      81/    2F90 :                     	
-      82/    2F90 :                     ; ====================================================================
-      83/    2F90 :                     ; DATA Section (large)
-      84/    2F90 :                     ; ====================================================================
-      85/    2F90 :                     
-      86/    2F90 :                     DataBank:
-      87/    2F90 :                     		include	"game/data.asm"
-(1)    1/    2F90 :                     ; ================================================================
-(1)    2/    2F90 :                     ; ------------------------------------------------------------
-(1)    3/    2F90 :                     ; DATA SECTION
-(1)    4/    2F90 :                     ; ------------------------------------------------------------
-(1)    5/    2F90 :                     
-(1)    6/    2F90 :                     Art_BgYmEd:	binclude "game/backgrnd/back_art.bin"
-(1)    7/    3430 :                     Art_BgYmEd_e:
-(1)    8/    3430 :                     Art_Algor:	binclude "game/backgrnd/algor_art.bin"
-(1)    9/    6130 :                     Art_Algor_e:
-(1)   10/    6130 :                     
-(1)   11/    6130 :                     Map_BgYmEd:	binclude "game/backgrnd/back_map.bin"
-(1)   12/    6388 :                     Map_Algor:	binclude "game/backgrnd/algor_map.bin"
-(1)   13/    6658 :                     
-      88/    6658 :                     DataBank_e:
-      92/    6658 :                     
-      93/    6658 :                     ; ====================================================================
-      94/    6658 :                     
-      95/    6658 : (MACRO)             ROM_END:	rompad (ROM_END&$FF0000)+$10000
-      95/    6658 : =$99A8              diff := (ROM_END&$FF0000)+$10000 - *
-      95/    6658 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    6658 : 0000 0000 0000 0000                                 dc.b [1024]0
+(1) 1732/    2F90 :                     FmData_Default:
+(1) 1733/    2F90 : 0000 0000           		dc.b $00,$00,$00,$00
+(1) 1734/    2F94 : 0000 0000           		dc.b $00,$00,$00,$00
+(1) 1735/    2F98 : 0000 0000           		dc.b $00,$00,$00,$00
+(1) 1736/    2F9C : 0000 0000           		dc.b $00,$00,$00,$00
+(1) 1737/    2FA0 : 0000 0000           		dc.b $00,$00,$00,$00
+(1) 1738/    2FA4 : 0000 0000           		dc.b $00,$00,$00,$00
+(1) 1739/    2FA8 : 0000 0000           		dc.b $00,$00,$00,$00
+(1) 1740/    2FAC : 00                  		dc.b $00
+(1) 1741/    2FAD : 00                  		dc.b $00
+(1) 1742/    2FAE : 00                  		dc.b $00
+(1) 1743/    2FAF : F0                  		dc.b $F0
+(1) 1744/    2FB0 :                     		align 2
+(1) 1745/    2FB0 :                     
+      76/    2FB0 :                     CodeBank_e:
+      77/    2FB0 :                     
+      81/    2FB0 :                     	
+      82/    2FB0 :                     ; ====================================================================
+      83/    2FB0 :                     ; DATA Section (large)
+      84/    2FB0 :                     ; ====================================================================
+      85/    2FB0 :                     
+      86/    2FB0 :                     DataBank:
+      87/    2FB0 :                     		include	"game/data.asm"
+(1)    1/    2FB0 :                     ; ================================================================
+(1)    2/    2FB0 :                     ; ------------------------------------------------------------
+(1)    3/    2FB0 :                     ; DATA SECTION
+(1)    4/    2FB0 :                     ; ------------------------------------------------------------
+(1)    5/    2FB0 :                     
+(1)    6/    2FB0 :                     Art_BgYmEd:	binclude "game/backgrnd/back_art.bin"
+(1)    7/    3450 :                     Art_BgYmEd_e:
+(1)    8/    3450 :                     Art_Algor:	binclude "game/backgrnd/algor_art.bin"
+(1)    9/    6150 :                     Art_Algor_e:
+(1)   10/    6150 :                     
+(1)   11/    6150 :                     Map_BgYmEd:	binclude "game/backgrnd/back_map.bin"
+(1)   12/    63A8 :                     Map_Algor:	binclude "game/backgrnd/algor_map.bin"
+(1)   13/    6678 :                     
+      88/    6678 :                     DataBank_e:
+      92/    6678 :                     
+      93/    6678 :                     ; ====================================================================
+      94/    6678 :                     
+      95/    6678 : (MACRO)             ROM_END:	rompad (ROM_END&$FF0000)+$10000
+      95/    6678 : =$9988              diff := (ROM_END&$FF0000)+$10000 - *
+      95/    6678 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    6678 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -5747,9 +5779,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    6A58 : =$95A8              diff := diff - 1024
-      95/    6A58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    6A58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    6A78 : =$9588              diff := diff - 1024
+      95/    6A78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    6A78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -5877,9 +5909,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    6E58 : =$91A8              diff := diff - 1024
-      95/    6E58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    6E58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    6E78 : =$9188              diff := diff - 1024
+      95/    6E78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    6E78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -6007,9 +6039,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    7258 : =$8DA8              diff := diff - 1024
-      95/    7258 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    7258 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    7278 : =$8D88              diff := diff - 1024
+      95/    7278 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    7278 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -6137,9 +6169,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    7658 : =$89A8              diff := diff - 1024
-      95/    7658 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    7658 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    7678 : =$8988              diff := diff - 1024
+      95/    7678 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    7678 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -6267,9 +6299,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    7A58 : =$85A8              diff := diff - 1024
-      95/    7A58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    7A58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    7A78 : =$8588              diff := diff - 1024
+      95/    7A78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    7A78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -6397,9 +6429,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    7E58 : =$81A8              diff := diff - 1024
-      95/    7E58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    7E58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    7E78 : =$8188              diff := diff - 1024
+      95/    7E78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    7E78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -6527,9 +6559,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    8258 : =$7DA8              diff := diff - 1024
-      95/    8258 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    8258 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    8278 : =$7D88              diff := diff - 1024
+      95/    8278 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    8278 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -6657,9 +6689,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    8658 : =$79A8              diff := diff - 1024
-      95/    8658 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    8658 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    8678 : =$7988              diff := diff - 1024
+      95/    8678 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    8678 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -6787,9 +6819,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    8A58 : =$75A8              diff := diff - 1024
-      95/    8A58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    8A58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    8A78 : =$7588              diff := diff - 1024
+      95/    8A78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    8A78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -6917,9 +6949,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    8E58 : =$71A8              diff := diff - 1024
-      95/    8E58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    8E58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    8E78 : =$7188              diff := diff - 1024
+      95/    8E78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    8E78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -7047,9 +7079,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    9258 : =$6DA8              diff := diff - 1024
-      95/    9258 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    9258 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    9278 : =$6D88              diff := diff - 1024
+      95/    9278 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    9278 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -7177,9 +7209,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    9658 : =$69A8              diff := diff - 1024
-      95/    9658 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    9658 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    9678 : =$6988              diff := diff - 1024
+      95/    9678 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    9678 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -7307,9 +7339,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    9A58 : =$65A8              diff := diff - 1024
-      95/    9A58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    9A58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    9A78 : =$6588              diff := diff - 1024
+      95/    9A78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    9A78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -7437,9 +7469,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    9E58 : =$61A8              diff := diff - 1024
-      95/    9E58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    9E58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    9E78 : =$6188              diff := diff - 1024
+      95/    9E78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    9E78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -7567,9 +7599,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    A258 : =$5DA8              diff := diff - 1024
-      95/    A258 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    A258 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    A278 : =$5D88              diff := diff - 1024
+      95/    A278 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    A278 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -7697,9 +7729,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    A658 : =$59A8              diff := diff - 1024
-      95/    A658 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    A658 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    A678 : =$5988              diff := diff - 1024
+      95/    A678 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    A678 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -7827,9 +7859,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    AA58 : =$55A8              diff := diff - 1024
-      95/    AA58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    AA58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    AA78 : =$5588              diff := diff - 1024
+      95/    AA78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    AA78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -7957,9 +7989,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    AE58 : =$51A8              diff := diff - 1024
-      95/    AE58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    AE58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    AE78 : =$5188              diff := diff - 1024
+      95/    AE78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    AE78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -8087,9 +8119,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    B258 : =$4DA8              diff := diff - 1024
-      95/    B258 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    B258 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    B278 : =$4D88              diff := diff - 1024
+      95/    B278 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    B278 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -8217,9 +8249,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    B658 : =$49A8              diff := diff - 1024
-      95/    B658 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    B658 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    B678 : =$4988              diff := diff - 1024
+      95/    B678 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    B678 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -8347,9 +8379,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    BA58 : =$45A8              diff := diff - 1024
-      95/    BA58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    BA58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    BA78 : =$4588              diff := diff - 1024
+      95/    BA78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    BA78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -8477,9 +8509,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    BE58 : =$41A8              diff := diff - 1024
-      95/    BE58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    BE58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    BE78 : =$4188              diff := diff - 1024
+      95/    BE78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    BE78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -8607,9 +8639,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    C258 : =$3DA8              diff := diff - 1024
-      95/    C258 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    C258 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    C278 : =$3D88              diff := diff - 1024
+      95/    C278 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    C278 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -8737,9 +8769,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    C658 : =$39A8              diff := diff - 1024
-      95/    C658 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    C658 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    C678 : =$3988              diff := diff - 1024
+      95/    C678 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    C678 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -8867,9 +8899,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    CA58 : =$35A8              diff := diff - 1024
-      95/    CA58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    CA58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    CA78 : =$3588              diff := diff - 1024
+      95/    CA78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    CA78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -8997,9 +9029,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    CE58 : =$31A8              diff := diff - 1024
-      95/    CE58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    CE58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    CE78 : =$3188              diff := diff - 1024
+      95/    CE78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    CE78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -9127,9 +9159,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    D258 : =$2DA8              diff := diff - 1024
-      95/    D258 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    D258 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    D278 : =$2D88              diff := diff - 1024
+      95/    D278 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    D278 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -9257,9 +9289,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    D658 : =$29A8              diff := diff - 1024
-      95/    D658 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    D658 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    D678 : =$2988              diff := diff - 1024
+      95/    D678 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    D678 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -9387,9 +9419,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    DA58 : =$25A8              diff := diff - 1024
-      95/    DA58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    DA58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    DA78 : =$2588              diff := diff - 1024
+      95/    DA78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    DA78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -9517,9 +9549,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    DE58 : =$21A8              diff := diff - 1024
-      95/    DE58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    DE58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    DE78 : =$2188              diff := diff - 1024
+      95/    DE78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    DE78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -9647,9 +9679,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    E258 : =$1DA8              diff := diff - 1024
-      95/    E258 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    E258 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    E278 : =$1D88              diff := diff - 1024
+      95/    E278 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    E278 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -9777,9 +9809,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    E658 : =$19A8              diff := diff - 1024
-      95/    E658 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    E658 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    E678 : =$1988              diff := diff - 1024
+      95/    E678 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    E678 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -9907,9 +9939,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    EA58 : =$15A8              diff := diff - 1024
-      95/    EA58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    EA58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    EA78 : =$1588              diff := diff - 1024
+      95/    EA78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    EA78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -10037,9 +10069,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    EE58 : =$11A8              diff := diff - 1024
-      95/    EE58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    EE58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    EE78 : =$1188              diff := diff - 1024
+      95/    EE78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    EE78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -10167,9 +10199,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    F258 : =$DA8               diff := diff - 1024
-      95/    F258 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    F258 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    F278 : =$D88               diff := diff - 1024
+      95/    F278 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    F278 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -10297,9 +10329,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    F658 : =$9A8               diff := diff - 1024
-      95/    F658 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    F658 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    F678 : =$988               diff := diff - 1024
+      95/    F678 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    F678 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -10427,9 +10459,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    FA58 : =$5A8               diff := diff - 1024
-      95/    FA58 :                                                     ; AS can only generate 1 kb of code on a single line
-      95/    FA58 : 0000 0000 0000 0000                                 dc.b [1024]0
+      95/    FA78 : =$588               diff := diff - 1024
+      95/    FA78 :                                                     ; AS can only generate 1 kb of code on a single line
+      95/    FA78 : 0000 0000 0000 0000                                 dc.b [1024]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -10557,13 +10589,9 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
-      95/    FE58 : =$1A8               diff := diff - 1024
-      95/    FE58 :                     
-      95/    FE58 : 0000 0000 0000 0000                         dc.b [diff]0
-                    0000 0000 0000 0000 
-                    0000 0000 0000 0000 
-                    0000 0000 0000 0000 
-                    0000 0000 0000 0000 
+      95/    FE78 : =$188               diff := diff - 1024
+      95/    FE78 :                     
+      95/    FE78 : 0000 0000 0000 0000                         dc.b [diff]0
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
@@ -10613,21 +10641,21 @@ MD RAM ends at: FFA08A
                     0000 0000 0000 0000 
                     0000 0000 0000 0000 
       96/   10000 :                     
- AS V1.42 Beta [Bld 118] - source file main.asm - page 2 - 10/13/2019 20:42:13
+ AS V1.42 Beta [Bld 118] - source file main.asm - page 2 - 9/24/2020 23:12:30
 
 
   symbol table (* = unused):
   ------------------------
 
 *ARCHITECTURE :                                        x86_64-unknown-linux - |
- ART_ALGOR :                   3430 C |  ART_ALGOR_E :                 6130 C |
- ART_BGYMED :                  2F90 C |  ART_BGYMED_E :                3430 C |
+ ART_ALGOR :                   3450 C |  ART_ALGOR_E :                 6150 C |
+ ART_BGYMED :                  2FB0 C |  ART_BGYMED_E :                3450 C |
  ART_PRINTFONT :               10A6 C |  ART_PRINTFONT_E :             1CA6 C |
  ASCPRINT_CUSTOM :             20BA C |  ASCPRINT_CUSTOM.EXIT :        20D4 C |
- ASCPRINT_CUSTOM.LOOPY :       20C8 C |  ASC_NAMES :                   2AD2 C |
- ASC_NOTENAMES :               2BF0 C |  ASC_OFF :                     2ACE C |
- ASC_ON :                      2ACA C |  ASC_OPNAMES :                 2AB6 C |
- ASC_TITLE :                   2AA8 C | *BIGENDIAN :                      0 - |
+ ASCPRINT_CUSTOM.LOOPY :       20C8 C |  ASC_NAMES :                   2AF8 C |
+ ASC_NOTENAMES :               2C16 C |  ASC_OFF :                     2AF4 C |
+ ASC_ON :                      2AF0 C |  ASC_OPNAMES :                 2ADC C |
+ ASC_TITLE :                   2ACE C | *BIGENDIAN :                      0 - |
 *BITDISPENBL :                    6 - |  BITDMA :                         1 - |
  BITDMAENBL :                     4 - | *BITHBLNK :                       2 - |
 *BITHINTENBL :                    4 - | *BITHVSTOP :                      1 - |
@@ -10645,13 +10673,13 @@ MD RAM ends at: FFA08A
  BUFFSCHN1_FLAG :               800 C |  BUFFSCHN1_LOOP :               80B C |
  BUFFSCHN1_READ :               801 C |  BUFFSCHN1_SPD :                80E C |
  BUFFSCHN1_START :              805 C | *CASESENSITIVE :                  0 - |
-*CODEBANK :                    1E44 C | *CODEBANK_E :                  2F90 C |
+*CODEBANK :                    1E44 C | *CODEBANK_E :                  2FB0 C |
 *CONSTPI :        3.141592653589793 - |  CONTROLLER_1 :    FFFFFFFFFFFFA004 - |
-*CONTROLLER_2 :    FFFFFFFFFFFFA00A - | *DATABANK :                    2F90 C |
-*DATABANK_E :                  6658 C | *DATE :                  10/13/2019 - |
- DIFF :                         1A8 - | *DISPENBL :                      40 - |
+*CONTROLLER_2 :    FFFFFFFFFFFFA00A - | *DATABANK :                    2FB0 C |
+*DATABANK_E :                  6678 C | *DATE :                   9/24/2020 - |
+ DIFF :                         188 - | *DISPENBL :                      40 - |
 *DMAENBL :                       10 - | *FALSE :                          0 - |
- FMDATA_DEFAULT :              2F70 C |  FMDATA_FREQLIST :             2E96 C |
+ FMDATA_DEFAULT :              2F90 C |  FMDATA_FREQLIST :             2EBC C |
  FMEDIT_DRAWMENU :             25F6 C |  FMEDIT_DRAWMENU.AMPOFF :      268E C |
  FMEDIT_DRAWMENU.CH3OFF :      270E C |  FMEDIT_DRAWMENU.FREQWRD :     2824 C |
  FMEDIT_DRAWMENU.FREQWRD2 :    289A C |  FMEDIT_DRAWMENU.KEYOFF :      2624 C |
@@ -10721,11 +10749,11 @@ MD RAM ends at: FFA08A
  FMSTRU_FMSAMS :                 1D C |  FMSTRU_KEY :                    1F C |
  FMSTRU_MULDEPT :                 0 C |  FMSTRU_RATEATCK :                8 C |
  FMSTRU_RELSUST :                14 C |  FMSTRU_SSGEG :                  18 C |
- FMSTRU_TLEVL :                   4 C |  FM_SET :                      2A5A C |
- FM_SET.WAIT2 :                2A6C C |  FM_UPDATE :                   29A0 C |
- FM_UPDATE.DOFREQ :            2A0C C |  FM_UPDATE.LOOPI :             29D0 C |
- FM_UPDATE.NOEDFREQ3 :         2A22 C |  FM_UPDATE.WAITZ :             29A8 C |
-*FM_UPDATEFREQ :               2A58 C | *FULLPMMU :                       1 - |
+ FMSTRU_TLEVL :                   4 C |  FM_SET :                      2A80 C |
+ FM_SET.WAIT2 :                2A92 C |  FM_UPDATE :                   29A0 C |
+ FM_UPDATE.HAS_CHNL3 :         2A02 C |  FM_UPDATE.LOOPI :             29D0 C |
+ FM_UPDATE.NOEDFREQ3 :         2A48 C |  FM_UPDATE.WAITZ :             29A8 C |
+*FM_UPDATEFREQ :               2A7E C | *FULLPMMU :                       1 - |
  GLBL_LASTORG :                1E44 - |  GLBL_LASTPC :                 1E44 - |
 *HAS64 :                          1 - | *HASDSP :                         0 - |
 *HASFPU :                         0 - | *HASPMMU :                        0 - |
@@ -10739,10 +10767,10 @@ MD RAM ends at: FFA08A
 *JOYSTART :                      80 - | *JOYUP :                          1 - |
 *JOYX :                         400 - | *JOYY :                         200 - |
 *JOYZ :                         100 - | *LISTON :                         3 - |
- LIST_FIXDPALS :               2A80 C |  LIST_SHFTAND_1 :              2D70 C |
- LIST_SHFTAND_2 :              2DBA C |  LIST_SINGLEVAL :              2DE4 C |
+ LIST_FIXDPALS :               2AA6 C |  LIST_SHFTAND_1 :              2D96 C |
+ LIST_SHFTAND_2 :              2DE0 C |  LIST_SINGLEVAL :              2E0A C |
  LIST_VDPREGS :                1092 C | *MACEXP :                         7 - |
- MAP_ALGOR :                   6388 C |  MAP_BGYMED :                  6130 C |
+ MAP_ALGOR :                   63A8 C |  MAP_BGYMED :                  6150 C |
  MAX_LOCRAM :                  2000 - |  MAX_PRNTLIST :                  10 - |
  MDRAM_START :             FFFF8000 - | *MD_BANK_SRAM :              A130F1 - |
  MD_ENTRY :                     202 C |  MD_ENTRY.CLRRAM :              248 C |
@@ -10760,7 +10788,7 @@ MD RAM ends at: FFA08A
  ON_PRESS :                       4 C | *PACKING :                        0 - |
 *PADDING :                        0 - | *PADDINGSOFAR :                   0 - |
  PAD_ID :                         0 C |  PAD_VER :                        1 C |
- PAL_FMSCREEN :                2E16 C |  PAL_PRINTFONT :               1CA6 C |
+ PAL_FMSCREEN :                2E3C C |  PAL_PRINTFONT :               1CA6 C |
  PSG_CTRL :                  C00011 - | *RAM_BTNEDIT :     FFFFFFFFFFFF8004 C |
  RAM_CURROPT :     FFFFFFFFFFFF8008 C |  RAM_CURRSET :     FFFFFFFFFFFF8006 C |
  RAM_FM_INTR :     FFFFFFFFFFFF0000 C | *RAM_GLBLNULL :    FFFFFFFFFFFF8000 C |
@@ -10771,7 +10799,7 @@ MD RAM ends at: FFA08A
  RAM_SETFREQ.COPY :            1E62 C |  RAM_SETNOTE :     FFFFFFFFFFFF800C C |
  RAM_VDPCACHE :    FFFFFFFFFFFFA010 C |  RAM_VIDPRNTLIST : FFFFFFFFFFFFA028 C |
  RAM_VIDPRNTVRAM : FFFFFFFFFFFFA088 C | *RELAXED :                        0 - |
- ROM_END :                     6658 C |  SHOWVAL_CUSTOM :              20D6 C |
+ ROM_END :                     6678 C |  SHOWVAL_CUSTOM :              20D6 C |
  SHOWVAL_CUSTOM.LOWA :         20F4 C |  SHOWVAL_CUSTOM2 :             20FA C |
  SHOWVAL_CUSTOM2.LOWA :        211A C |  SHOWVAL_CUSTOM2.LOWA2 :       212E C |
  SHOWVAL_WORD :                2134 C |  SHOWVAL_WORD.LOOPW :          214A C |
@@ -10799,7 +10827,7 @@ MD RAM ends at: FFA08A
  SYS_DATA_1 :                A10003 - | *SYS_DATA_2 :                A10005 - |
 *SYS_DATA_3 :                A10007 - | *SYS_EXRAM :                 200000 - |
  SYS_IO :                    A10001 - |  SYS_TMSS :                  A14000 - |
-*TIME :                    20:42:13 - | *TRUE :                           1 - |
+*TIME :                    23:12:30 - | *TRUE :                           1 - |
  VARNULLVRAM :                  7FF - |  VDP_CTRL :                  C00004 - |
  VDP_DATA :                  C00000 - | *VDP_PALETTE :             C0000000 - |
 *VDP_VSRAM :               40000010 - | *VERSION :                     142F - |
@@ -10851,7 +10879,7 @@ MD RAM ends at: FFA08A
     451 symbols
     102 unused symbols
 
- AS V1.42 Beta [Bld 118] - source file main.asm - page 3 - 10/13/2019 20:42:13
+ AS V1.42 Beta [Bld 118] - source file main.asm - page 3 - 9/24/2020 23:12:30
 
 
   defined macros:
@@ -10863,7 +10891,7 @@ ROMPAD                                | STRUCT
 
       6 macros
 
- AS V1.42 Beta [Bld 118] - source file main.asm - page 4 - 10/13/2019 20:42:13
+ AS V1.42 Beta [Bld 118] - source file main.asm - page 4 - 9/24/2020 23:12:30
 
 
   defined functions:
@@ -10872,7 +10900,7 @@ ROMPAD                                | STRUCT
 NOTZ80                                | LOCATE                               
 MAPSIZE                               | DOUBLEWORD                           
 
- AS V1.42 Beta [Bld 118] - source file main.asm - page 5 - 10/13/2019 20:42:13
+ AS V1.42 Beta [Bld 118] - source file main.asm - page 5 - 9/24/2020 23:12:30
 
 
   codepages:
@@ -10881,10 +10909,10 @@ MAPSIZE                               | DOUBLEWORD
 STANDARD (0 changed characters)
 
 
-0.55 seconds assembly time
+0.10 seconds assembly time
 
-   3775 lines source file
-   5744 lines incl. macro expansions
+   3807 lines source file
+   5776 lines incl. macro expansions
       5 passes
       0 errors
       0 warnings

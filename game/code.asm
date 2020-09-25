@@ -1255,6 +1255,8 @@ FM_Update:
 		add.w	#4,d0
 		dbf	d2,.loopi
 
+		tst.b	(RAM_FM_Intr+fmstru_chnmode).l
+		bne.s	.has_chnl3
 		lea	(RAM_SetFreq),a0
 		move.w	#$A6,d0
 		move.b	(a0)+,d1
@@ -1262,21 +1264,51 @@ FM_Update:
 		move.w	#$A2,d0
 		move.b	(a0)+,d1
 		bsr	FM_Set
-		
-		tst.b	(RAM_FM_Intr+fmstru_chnmode).l
-		beq.s	.noedfreq3
+		bra.s	.noedfreq3
+
+.has_chnl3:
 		lea	(RAM_SetFreq),a0
-		move.l	#$00AC00A8,d0
-		move.w	#3-1,d2
-.dofreq:
+; 		move.l	#$00AC00A8,d0
+; 		move.w	#3-1,d2
+; .dofreq:
+; 		move.b	(a0)+,d1
+; 		bsr	FM_Set
+; 		add.w	#1,d0
+; 		swap	d0
+; 		move.b	(a0)+,d1
+; 		bsr	FM_Set
+; 		add.w	#1,d0
+; 		swap	d0
+; 		dbf	d2,.dofreq
+		
+		move.w	#$AC,d0
 		move.b	(a0)+,d1
 		bsr	FM_Set
-		swap	d0
+		move.w	#$A8,d0
 		move.b	(a0)+,d1
 		bsr	FM_Set
-		swap	d0
-		add.l	#$00010001,d0
-		dbf	d2,.dofreq
+		
+		move.w	#$AD,d0
+		move.b	(a0)+,d1
+		bsr	FM_Set
+		move.w	#$A9,d0
+		move.b	(a0)+,d1
+		bsr	FM_Set
+		
+		move.w	#$AE,d0
+		move.b	(a0)+,d1
+		bsr	FM_Set
+		move.w	#$AA,d0
+		move.b	(a0)+,d1
+		bsr	FM_Set
+
+		move.w	#$A6,d0
+		move.b	(a0)+,d1
+		bsr	FM_Set
+		move.w	#$A2,d0
+		move.b	(a0)+,d1
+		bsr	FM_Set
+
 .noedfreq3:
 		move.b	#$B2,d0
 		move.b	(a3)+,d1
